@@ -6,18 +6,18 @@ body {
 	line-height: 140%;
 	padding: 0px;
 }
-#menu ul{ 
-margin: 0; 
-padding :0; 
-list-style: none; 
+#menu ul{
+margin: 0;
+padding :0;
+list-style: none;
 }
-#menu li{ 
-padding: 0; 
-margin: 0; 
+#menu li{
+padding: 0;
+margin: 0;
 float: left;
 }
 #menu li a{
-background: url(最初の画像のアドレス) no-repeat left center;
+background: url(../image/next.png) no-repeat left center;
 padding: 2px 0px 3px 18px;
 color: #555;
 width: 100px;
@@ -27,6 +27,6 @@ border-bottom: 1px dotted #666666;
 font-size: 14px;
 }
 #menu li a:hover{
-background: url(入れ替わる画像のアドレス) no-repeat left center;
+background: url(../image/back.png) no-repeat left center;
 }
 
