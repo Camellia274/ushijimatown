@@ -1,11 +1,18 @@
 @CHARSET "UTF-8";
 
 body {
-	margin: 10px 300px 10px 300px;
+	margin: 10px 300px 10px 250px;
 	font-size:80%;
 	line-height: 140%;
 	padding: 0px;
 }
+a {
+text-decoration: none;/*リンクの下線を消す*/
+}
+a:link { color: #400040; }
+a:visited { color: #0000ff; }
+a:hover { color: #ff8080; }
+a:active { color: #ca6635; }
 
 .header {
 float: left;
@@ -15,13 +22,18 @@ float: left;
 float: left;
 margin-top: 10;
 margin-left: 10;
-
 }
+.login{
+float: rigth;
+margin-top: 10;
+}
+/*                           ↓メニュ*/
 
 #menu ul{
 margin: 0;
 padding :0;
 list-style: none;
+float:left;
 }
 #menu li{
 padding: 0;
@@ -29,7 +41,7 @@ margin: 0;
 float: left;
 }
 #menu li a{
-background: url(../image/next.png) no-repeat left center;
+background: url(../image/next.png) no-repeat ;
 padding: 2px 0px 3px 18px;
 color: #555;
 width: 100px;
@@ -39,6 +51,152 @@ border-bottom: 1px dotted #666666;
 font-size: 14px;
 }
 #menu li a:hover{
-background: url(../image/back.png) no-repeat left center;
+background: url(../image/back.png) no-repeat ;
 }
+/*                            ↑メニュ*/
+/*							↓検索フォーム*/
+#searchform4 {
+    width: 200px;
+    background: url(../image/input4.gif) ;
+    display: block;
+    height: 24px;
+    position: relative;
+	left:450px;
+    float:left;
+
+}
+#keywords4  {
+    width: 156px;
+    position: absolute;
+    top: 3px;
+    left: 12px;
+    border: 1px solid #FFF;
+}
+#searchBtn4 {
+    position: absolute;
+    top: 3px;
+    left: 174px;
+}
+/*							↑検索フォーム*/
+/*							↓固定↓*/
+#anime{
+width : 1500px;
+height: 426px;
+clear:both;
+}
+#animetitle{
+border:1px  solid #c0c0c0;
+float:left;
+width:150px;
+height: 426px;
+}
+#animeosusume{
+float:left;
+width:700px;
+height: 426px;
+}
+#animekoukoku{
+border:1px  solid #c0c0c0;
+float:left;
+width: 150px;
+height: 426px;
+}
+/*							↑固定↑*/
+@charset "utf-8";
+.section {
+position: relative;
+zoom: 1;
+}
+
+.sliders img {
+vertical-align: bottom;
+}
+
+.sliders * {
+margin: 0;
+padding: 0;
+}
+
+/*--------------
+ sliders用
+--------------*/
+.sliders {
+position: relative;
+}
+
+.sliders li {
+overflow: hidden;
+list-style-type: none;
+}
+
+.sliders li a img {
+border: 0;
+}
+
+.pager {
+padding: 10px 0;
+text-align: center;
+}
+
+.pager li {
+display: inline-block;
+*display: inline!important;
+list-style-type: none;
+zoom: 1;
+}
+
+.pager a {
+margin: 0 5px;
+display: block;
+width: 10px;
+height: 10px;
+background: url(../image/pager_off.png) no-repeat left top;
+text-decoration: none;
+text-indent: -9999px;
+outline: none;
+}
+
+.pager a:hover,
+.pager .current a {
+color: red;
+text-decoration: none;
+background: url(../image/pager_on.png) no-repeat left top;
+}
+
+.prev {
+margin-top: -25px;
+margin-left: -450px;
+width: 50px;
+height: 50px;
+position: absolute;
+top: 50%;
+left: 50%;
+background: url(../image/prev_off.png) no-repeat left top;
+text-indent: -9999px;
+z-index: 50;
+cursor: pointer;
+}
+
+.prev:hover {
+background-image: url(../image/prev_on.png);
+}
+
+.next {
+margin-top: -25px;
+margin-left: 400px;
+width: 50px;
+height: 50px;
+position: absolute;
+top: 50%;
+left: 50%;
+background: url(../image/next_off.png) no-repeat left top;
+text-indent: -9999px;
+z-index: 50;
+cursor: pointer;
+}
+
+.next:hover {
+background-image: url(../image/next_on.png);
+}
+
 
