@@ -93,9 +93,10 @@ width:150px;
 height: 426px;
 }
 #animeosusume{
+border:1px  solid #c0c0c0;
 float:left;
 width:700px;
-height: 426px;
+height: 1500px;
 }
 #animekoukoku{
 border:1px  solid #c0c0c0;
@@ -104,6 +105,7 @@ width: 150px;
 height: 426px;
 }
 /*							↑固定↑*/
+/*							↓スライド↓*/
 @charset "utf-8";
 .section {
 position: relative;
@@ -200,5 +202,5 @@ cursor: pointer;
 .next:hover {
 background-image: url(../image/next_on.png);
 }
-
+/*							↑スライド↑*/
 
