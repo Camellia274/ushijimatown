@@ -6,9 +6,48 @@
 </head>
 <body>
 
-<?php include '../php/phptest.php'; ?>
+<?php include '../php/common.php'; ?>
+<?php session_start(); ?>
+
+<STYLE type="text/css">
+<!--
+body {
+	background-color: #BADECD;
+	width: 1000px;
+	height: 500px;
+}
+table {
+	background-color: #DFACB9;
+}
+-->
+</STYLE>
+
+<div>
+<form action="phptest.html" method="post">
+<table border="1">
+	<tr>
+	<td>メールアドレス</td><td><input type="text" name="useremail" size="20"></td>
+	</tr>
+	<tr>
+	<td>パスワード</td><td><input type="password" name="userpassword" size="21"></td>
+	</tr>
+	<tr>
+	<td colspan="2" align="center"><input type="submit" value="ログイン"></td>
+	</tr>
+</table>
+</form>
 <?php
-phptest();
+	login();
+?>
+</div>
+
+<?php
+if(!isset($_SESSION["username"])){
+	$_SESSION["username"] = "ゲスト";
+}
+
+print "ようこそ" . $_SESSION["username"] . "さん";
+
 ?>
 
 </body>
