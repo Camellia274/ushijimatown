@@ -6,6 +6,9 @@ body {
 	line-height: 140%;
 	padding: 0px;
 }
+span.midasi {
+font-weight: 900;
+ }
 a {
 text-decoration: none;/*リンクの下線を消す*/
 }
