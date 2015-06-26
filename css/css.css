@@ -19,6 +19,7 @@ a:active { color: #ca6635; }
 width:1300px;//各要素にwidthがあったほうがいいかも。
 height:200px;
 
+
 }
 
 #header_left {
@@ -29,17 +30,21 @@ float:left;
 }
 #sab{
 width:150px;
+
 height:200px;
 float:left;
 margin-top:50px;
 margin-left:20px;
+
 }
 #login{
 width:200p;
+
 height:200px;
 float:left;
 margin-top:50px;
 margin-left:460px;
+
 
 }
 /*                           ↓メニュ*/
@@ -105,33 +110,39 @@ background: url(../image/back.png) no-repeat ;
 #anime{
 width : 1300px;
 height:1000px;
+
 border:1px  solid #ffffff;
+
 
 clear:both;
 }
 #animetitle{
-border:1px  solid #c0c0c0;
+border:1px  solid #ffff00;
 float:left;
 width:190px;
 height: 500px;
 margin:5px;
 }
 #mannaka{
+
 	border:1px  solid #c0c0c0;
+
 margin:5px;
 width:870px;
 height: 900px;
 float:left;
 }
 #animeosusume{
+
 border:1px  solid #ffffff;
+
 float:left;
 width:870px;
 height: 900px;
 
 }
 #animekoukoku{
-border:1px  solid #c0c0c0;
+border:1px  solid #00ff40;
 float:left;
 width: 190px;
 height: 500px;
