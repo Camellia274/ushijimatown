@@ -16,8 +16,9 @@ a:hover { color: #ff8080; }
 a:active { color: #ca6635; }
 
 #header{
-width:1000px;//各要素にwidthがあったほうがいいかも。
-height:250px;
+width:1300px;//各要素にwidthがあったほうがいいかも。
+height:200px;
+
 
 }
 
@@ -29,13 +30,21 @@ float:left;
 }
 #sab{
 width:150px;
-height:300px;
+
+height:200px;
 float:left;
+margin-top:50px;
+margin-left:20px;
+
 }
 #login{
 width:200p;
-height:300px;
-float:rigth;
+
+height:200px;
+float:left;
+margin-top:50px;
+margin-left:460px;
+
 
 }
 /*                           ↓メニュ*/
@@ -101,7 +110,9 @@ background: url(../image/back.png) no-repeat ;
 #anime{
 width : 1300px;
 height:1000px;
-border:1px  solid #ff0000;
+
+border:1px  solid #ffffff;
+
 
 clear:both;
 }
@@ -113,14 +124,18 @@ height: 500px;
 margin:5px;
 }
 #mannaka{
-	border:1px  solid #ff0080;
+
+	border:1px  solid #c0c0c0;
+
 margin:5px;
 width:870px;
 height: 900px;
 float:left;
 }
 #animeosusume{
-border:1px  solid #0000ff;
+
+border:1px  solid #ffffff;
+
 float:left;
 width:870px;
 height: 900px;
