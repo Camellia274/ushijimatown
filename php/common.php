@@ -24,6 +24,7 @@ class common{
 			// 取得結果を変数にバインドする
 			$stmt->bind_result($member_id, $email_address, $password, $name);
 			while ($stmt->fetch()) {
+				session_start();
 				$_SESSION["username"] = $name;
 			}
 			$stmt->close();
