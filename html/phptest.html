@@ -6,9 +6,6 @@
 </head>
 <body>
 
-<?php include '../php/common.php'; ?>
-<?php session_start(); ?>
-
 <STYLE type="text/css">
 <!--
 body {
@@ -23,7 +20,7 @@ table {
 </STYLE>
 
 <div>
-<form action="phptest.html" method="post">
+<form action="../php/login.php" method="post">
 <table border="1">
 	<tr>
 	<td>メールアドレス</td><td><input type="text" name="useremail" size="20"></td>
@@ -36,18 +33,15 @@ table {
 	</tr>
 </table>
 </form>
-<?php
-	login();
-?>
-</div>
 
 <?php
-if(!isset($_SESSION["username"])){
-	$_SESSION["username"] = "ゲスト";
-}
+	session_start();
 
-print "ようこそ" . $_SESSION["username"] . "さん";
+	if(!isset($_SESSION["username"])){
+		$_SESSION["username"] = "ゲスト";
+	}
 
+	print "ようこそ" . $_SESSION["username"] . "さん";
 ?>
 
 </body>
