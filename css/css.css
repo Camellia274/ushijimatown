@@ -1,0 +1,235 @@
+@CHARSET "UTF-8";
+
+
+body
+    {
+     margin-left:auto;
+     margin-right:auto;
+     width:1300px;
+}
+a {
+text-decoration: none;/*リンクの下線を消す*/
+}
+a:link { color: #400040; }
+a:visited { color: #0000ff; }
+a:hover { color: #ff8080; }
+a:active { color: #ca6635; }
+
+#header{
+width:1000px;//各要素にwidthがあったほうがいいかも。
+height:250px;
+
+}
+
+#header_left {
+width:350px;
+height:200px;
+float:left;
+
+}
+#sab{
+width:150px;
+height:300px;
+float:left;
+}
+#login{
+width:200p;
+height:300px;
+float:rigth;
+
+}
+/*                           ↓メニュ*/
+
+#menu{
+float:left;
+}
+#menu ul{
+margin: 0;
+padding :0;
+list-style: none;
+float:left;
+}
+#menu li{
+padding: 0;
+margin: 0;
+float: left;
+}
+#menu li a{
+background: url(../image/next.png) no-repeat ;
+padding: 2px 0px 3px 18px;
+color: #555;
+width: 100px;
+margin: 1px 0px;
+text-decoration: none;
+border-bottom: 1px dotted #666666;
+font-size: 18px;
+}
+#menu li a:hover{
+background: url(../image/back.png) no-repeat ;
+}
+/*                            ↑メニュ*/
+/*							↓検索フォーム*/
+#kennsaku{
+	clear:both;
+	width:1300px;
+	heigth:200px;
+}
+#searchform4 {
+    width: 200px;
+    background: url(../image/input4.gif) ;
+    display: block;
+    height: 24px;
+    position: relative;
+	left:450px;
+    float:left;
+
+}
+#keywords4  {
+    width: 156px;
+    position: absolute;
+    top: 1px;
+    left: 12px;
+    border: 1px solid #FFF;
+}
+#searchBtn4 {
+    position: absolute;
+    top: 3px;
+    left: 174px;
+}
+/*							↑検索フォーム*/
+/*							↓固定↓*/
+#anime{
+width : 1300px;
+height:1000px;
+border:1px  solid #ff0000;
+
+clear:both;
+}
+#animetitle{
+border:1px  solid #ffff00;
+float:left;
+width:190px;
+height: 500px;
+margin:5px;
+}
+#mannaka{
+	border:1px  solid #ff0080;
+margin:5px;
+width:870px;
+height: 900px;
+float:left;
+}
+#animeosusume{
+border:1px  solid #0000ff;
+float:left;
+width:870px;
+height: 900px;
+
+}
+#animekoukoku{
+border:1px  solid #00ff40;
+float:left;
+width: 190px;
+height: 500px;
+margin:5px;
+}
+/*							↑固定↑*/
+/*							↓スライド↓*/
+@charset "utf-8";
+.section {
+position: relative;
+zoom: 1;
+}
+
+.sliders img {
+vertical-align: bottom;
+}
+
+.sliders * {
+margin: 0;
+padding: 0;
+}
+
+/*--------------
+ sliders用
+--------------*/
+.sliders {
+position: relative;
+}
+
+.sliders li {
+overflow: hidden;
+list-style-type: none;
+}
+
+.sliders li a img {
+border: 0;
+}
+
+.pager {
+padding: 10px 0;
+text-align: center;
+}
+
+.pager li {
+display: inline-block;
+*display: inline!important;
+list-style-type: none;
+zoom: 1;
+}
+
+.pager a {
+margin: 0 5px;
+display: block;
+width: 10px;
+height: 10px;
+background: url(../image/pager_off.png) no-repeat left top;
+text-decoration: none;
+text-indent: -9999px;
+outline: none;
+}
+
+.pager a:hover,
+.pager .current a {
+color: red;
+text-decoration: none;
+background: url(../image/pager_on.png) no-repeat left top;
+}
+
+.prev {
+margin-top: -25px;
+margin-left: -450px;
+width: 50px;
+height: 50px;
+position: absolute;
+top: 50%;
+left: 50%;
+background: url(../image/prev_off.png) no-repeat left top;
+text-indent: -9999px;
+z-index: 50;
+cursor: pointer;
+}
+
+.prev:hover {
+background-image: url(../image/prev_on.png);
+}
+
+.next {
+margin-top: -25px;
+margin-left: 400px;
+width: 50px;
+height: 50px;
+position: absolute;
+top: 50%;
+left: 50%;
+background: url(../image/next_off.png) no-repeat left top;
+text-indent: -9999px;
+z-index: 50;
+cursor: pointer;
+}
+
+.next:hover {
+background-image: url(../image/next_on.png);
+}
+/*							↑スライド↑*/
+
