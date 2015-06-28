@@ -1,9 +1,12 @@
 <?php
 	//グローバル変数
 	$userid;
+	$useremail;
+	$userpassword;
 	$username;
+	$errormessage;
 
-	//ログイン
+	//ログイン処理
 	function login(){
 		// mysqliクラスのオブジェクトを作成
 		$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
@@ -28,6 +31,8 @@
 			$stmt->bind_result($member_id, $email_address, $password, $name);
 			while ($stmt->fetch()) {
 				$GLOBALS['userid']  = $member_id;
+				$GLOBALS['useremail'] = $email_address;
+				$GLOBALS['userpassword'] = $password;
 				$GLOBALS['username'] = $name;
 			}
 			$stmt->close();
@@ -36,12 +41,39 @@
 		$mysqli->close();
 	}
 
-	login();
-
+	//セッション開始
 	session_start();
-	$_SESSION["userid"] = $userid;
-	$_SESSION["username"] = $username;
 
-	header('location: ../html/phptest2.html');
+	//メールアドレスとパスワードが入力されている場合
+	if($_POST['useremail'] != null && $_POST['userpassword'] != null){
+		//ログイン処理
+		login();
+		//メールアドレスとパスワードが一致する場合
+		if ($_POST['useremail'] == $useremail && $_POST['userpassword'] == $userpassword) {
+			//セッションにユーザIDとユーザパスワードを入れる
+			$_SESSION['userid'] = $GLOBALS['userid'];
+			$_SESSION['username'] = $GLOBALS['username'];
+		}
+		else {
+			//グローバル変数にエラーメッセージを格納する
+			$GLOBALS['errormessage'] = "メールアドレスまたは、パスワードが違います。";
+		}
+	}
+	//メールアドレスが入力されていない場合
+	elseif ($_POST['useremail'] == null){
+		//グローバル変数にエラーメッセージを格納する
+		$GLOBALS['errormessage'] = "メールアドレスが入力されていません。";
+	}
+	//パスワードが入力されていない場合
+	elseif ($_POST['userpassword'] == null){
+		//グローバル変数にエラーメッセージを格納する
+		$GLOBALS['errormessage'] = "パスワードが入力されていません。";
+	}
+
+	//セッションにエラーメッセージを格納する
+	$_SESSION['errormessage'] = $GLOBALS['errormessage'];
+
+	//画面遷移
+	header('location: ../html/phptest.html');
 	exit();
 ?>

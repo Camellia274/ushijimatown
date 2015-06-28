@@ -6,33 +6,22 @@
 </head>
 <body>
 
-<STYLE type="text/css">
-<!--
-body {
-	background-color: #BADECD;
-	width: 1000px;
-	height: 500px;
-}
-table {
-	background-color: #DFACB9;
-}
--->
-</STYLE>
+<?php
+	//セッション開始
+	session_start();
 
-<div>
-<form action="../php/login.php" method="post">
-<table border="1">
-	<tr>
-	<td>メールアドレス</td><td><input type="text" name="useremail" size="20"></td>
-	</tr>
-	<tr>
-	<td>パスワード</td><td><input type="password" name="userpassword" size="21"></td>
-	</tr>
-	<tr>
-	<td colspan="2" align="center"><input type="submit" value="ログイン"></td>
-	</tr>
-</table>
-</form>
+	//セッション"username"が存在する場合
+	if (isset($_SESSION["username"])){
+		print $_SESSION["username"];
+	}
+
+	//エラーメッセージが存在した場合
+	if (isset($_SESSION['errormessage'])){
+		print $_SESSION['errormessage'];
+		//セッション"errormessage"を削除する
+		unset($_SESSION['errormessage']);
+	}
+?>
 
 </body>
 </html>
