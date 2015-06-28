@@ -1,10 +1,10 @@
 <?php
 	//グローバル変数
-	$userid;
-	$useremail;
-	$userpassword;
-	$username;
-	$errormessage;
+	$userid = null;
+	$useremail = null;
+	$userpassword = null;
+	$username = null;
+	$errormessage = null;
 
 	//ログイン処理
 	function login(){
@@ -58,6 +58,11 @@
 			//グローバル変数にエラーメッセージを格納する
 			$GLOBALS['errormessage'] = "メールアドレスまたは、パスワードが違います。";
 		}
+	}
+	//メールアドレスとパスワードが入力されていない場合
+	elseif ($_POST['useremail'] == null && $_POST['userpassword'] == null){
+		//グローバル変数にエラーメッセージを格納する
+		$GLOBALS['errormessage'] = "メールアドレスとパスワードが入力されていません。";
 	}
 	//メールアドレスが入力されていない場合
 	elseif ($_POST['useremail'] == null){
