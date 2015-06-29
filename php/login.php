@@ -79,6 +79,6 @@
 	$_SESSION['errormessage'] = $GLOBALS['errormessage'];
 
 	//画面遷移
-	header('location: ../html/phptest.html');
+	header('location: ../html/index.html');
 	exit();
 ?>
