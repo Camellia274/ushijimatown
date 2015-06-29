@@ -7,10 +7,6 @@ body
      margin-right:auto;
      width:1300px;
 }
-span.midasi {
-font-weight: 900;
-font-size: 20px;
- }
 a {
 text-decoration: none;/*リンクの下線を消す*/
 }
@@ -31,16 +27,6 @@ height:200px;
 float:left;
 
 }
-
-
-#site-box {
-           width : 700px;
- }
-
-
-#a-box {
- font-size: 35px;
- }
 
 #login{
 width:200p;
@@ -102,7 +88,7 @@ width:128px;
 #kennsaku{
 	clear:both;
 	width:1300px;
-	heigth:100px;
+	heigth:40px;
 }
 #menu{
 float:left;
@@ -131,22 +117,27 @@ font-size: 18px;
 #menu li a:hover{
 background: url(../image/back.png) no-repeat ;
 }
+/*******↑メニュ*******/
+
+/*******↓カート・購入履歴*********/
 #sab{
-width:150px;
-height:100px;
+width:500px;
+height:50px;
 float:right;
+}
+/*******↑カート・購入履歴*******/
+
+/*******↓検索フォーム*********/
+#kensakuform{
 
 }
-/*******↑メニュ*******/
-/*******↓検索フォーム*********/
-
 #searchform4 {
     width: 200px;
     background: url(../image/input4.gif) ;
     display: block;
     height: 24px;
     position: relative;
-	left:450px;
+	left:150px;
     float:left;
 
 }
@@ -166,11 +157,8 @@ float:right;
 /***********↓固定↓*************/
 #anime{
 width : 1300px;
-height:600px;
-
+height:600px
 border:1px  solid #ffffff;
-
-
 clear:both;
 }
 #animetitle{
