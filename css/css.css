@@ -7,6 +7,10 @@ body
      margin-right:auto;
      width:1300px;
 }
+span.midasi {
+font-weight: 900;
+font-size: 20px;
+ }
 a {
 text-decoration: none;/*リンクの下線を消す*/
 }
@@ -27,6 +31,16 @@ height:200px;
 float:left;
 
 }
+
+
+#site-box {
+           width : 700px;
+ }
+
+
+#a-box {
+ font-size: 35px;
+ }
 
 #login{
 width:200p;
