@@ -1,10 +1,11 @@
 @CHARSET "UTF-8";
 
-body {
-	margin: 10px 300px 10px 250px;
-	font-size:80%;
-	line-height: 140%;
-	padding: 0px;
+
+body
+    {
+     margin-left:auto;
+     margin-right:auto;
+     width:1300px;
 }
 span.midasi {
 font-weight: 900;
@@ -13,19 +14,30 @@ font-size: 20px;
 a {
 text-decoration: none;/*リンクの下線を消す*/
 }
-a:link { color: #400040; }
-a:visited { color: #0000ff; }
-a:hover { color: #ff8080; }
-a:active { color: #ca6635; }
 
-.header {
-float: left;
+
+
+
+#header{
+width:1300px;//各要素にwidthがあったほうがいいかも。
+height:200px;
+
 
 }
-.sab{
-float: left;
-margin-top: 10;
-margin-left: 10;
+
+#header_left {
+width:350px;
+height:200px;
+clear:both;
+
+}
+#sab{
+width:150px;
+height:200px;
+float:rigth;
+margin-top:50px;
+margin-left:20px;
+
 }
 
 #site-box {
@@ -38,12 +50,65 @@ margin-left: 10;
  }
 
 #login{
-float:rigth;
+width:200p;
 
-margin-left:800px;
+height:200px;
+
+margin-top:50px;
+margin-left:460px;
 }
-/*                           ↓メニュ*/
 
+/*****↓新規登録ボタン↓******/
+.classname {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ffffff 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dfdfdf');
+	background-color:#ffffff;
+	-webkit-border-top-left-radius:42px;
+	-moz-border-radius-topleft:42px;
+	border-top-left-radius:42px;
+	-webkit-border-top-right-radius:42px;
+	-moz-border-radius-topright:42px;
+	border-top-right-radius:42px;
+	-webkit-border-bottom-right-radius:42px;
+	-moz-border-radius-bottomright:42px;
+	border-bottom-right-radius:42px;
+	-webkit-border-bottom-left-radius:42px;
+	-moz-border-radius-bottomleft:42px;
+	border-bottom-left-radius:42px;
+text-indent:0;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#8c748c;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+height:32px;
+	line-height:32px;
+width:128px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+}.classname:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ffffff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ffffff');
+	background-color:#dfdfdf;
+}.classname:active {
+	position:relative;
+	top:1px;
+}
+
+/*****↑新規登録ボタン↑******/
+/*****↓メニュ↓*******/
+
+#menu{
+float:left;
+}
 #menu ul{
 margin: 0;
 padding :0;
@@ -63,13 +128,18 @@ width: 100px;
 margin: 1px 0px;
 text-decoration: none;
 border-bottom: 1px dotted #666666;
-font-size: 14px;
+font-size: 18px;
 }
 #menu li a:hover{
 background: url(../image/back.png) no-repeat ;
 }
 /*                            ↑メニュ*/
 /*							↓検索フォーム*/
+#kennsaku{
+	clear:both;
+	width:1300px;
+	heigth:200px;
+}
 #searchform4 {
     width: 200px;
     background: url(../image/input4.gif) ;
@@ -83,7 +153,7 @@ background: url(../image/back.png) no-repeat ;
 #keywords4  {
     width: 156px;
     position: absolute;
-    top: 3px;
+    top: 1px;
     left: 12px;
     border: 1px solid #FFF;
 }
@@ -95,27 +165,45 @@ background: url(../image/back.png) no-repeat ;
 /*							↑検索フォーム*/
 /*							↓固定↓*/
 #anime{
-width : 1500px;
-height: 426px;
+width : 1300px;
+height:600px;
+
+border:1px  solid #ffffff;
+
+
 clear:both;
 }
 #animetitle{
 border:1px  solid #c0c0c0;
 float:left;
-width:150px;
-height: 426px;
+width:190px;
+height: 600px;
+margin:5px;
+}
+#mannaka{
+
+	border:1px  solid #c0c0c0;
+
+margin:5px;
+width:870px;
+height: 600px;
+float:left;
 }
 #animeosusume{
-border:1px  solid #c0c0c0;
+
+border:1px  solid #ffffff;
+
 float:left;
-width:700px;
-height: 1500px;
+width:870px;
+height: 600px;
+
 }
 #animekoukoku{
 border:1px  solid #c0c0c0;
 float:left;
-width: 150px;
-height: 426px;
+width: 190px;
+height: 600px;
+margin:5px;
 }
 /*							↑固定↑*/
 /*							↓スライド↓*/
