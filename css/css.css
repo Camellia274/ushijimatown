@@ -191,10 +191,33 @@ height: 600px;
 border:1px  solid #c0c0c0;
 float:left;
 width: 190px;
-height: 600px;
+height: 420px;
 margin:5px;
 }
 /***********↑固定↑**************/
+/**************↓ログイン↓***************/
+.loginform{
+	width:190px;
+	height:100px;
+	padding:10px;
+	margin-left:5px;
+}
+/**************↑ログイン↑***************/
+/************↓ランダムバー↓***********/
+<!--
+/* 全体の囲み */
+div.box {
+   width: 180px; /* 囲みの横幅 */
+   margin-top:50px;
+}
+/* 画像の表示 */
+div.box p img {
+   border: 0px; /* リンク画像の枠線を消す */
+   width:190px;
+   height:50px;
+}
+-->
+/************↑ランダムバー↑***********/
 /***********↓スライド↓*********/
 @charset "utf-8";
 .section {
