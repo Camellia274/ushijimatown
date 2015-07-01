@@ -117,83 +117,128 @@ $(function(){
 </script>
 </head>
 <body>
+<?php
+//セッションを開始する
+session_start();
+?>
+
+<div class="main">
 <!--ヘッダーここから-->
 <a name="top" id="top"></a>
 
 <div id="header">
 <!--タイトルロゴここから-->
 <div class="header" id="header_left">
-<a href="index.html"><img src="../image/rogo.png" alt="rogo" width="300" height="110">
+<a href="../html/index.html"><img src="../image/rogo.png" alt="rogo" width="350" height="200">
 </a></div>
 <!--タイトルロゴここまで-->
-
-<div class="sab" id="sab" style="margin : 13px">
-<a href="cart.html"><img src="../image/cart.png" alt="sab" width="95" height="30"></a><br>
-<a href="goodshistory.html"><img src="../image/rireki.png" alt="sab" width="95" height="30"></a><br>
 </div>
 
-<div id="login" >
-<form method="POST" action="">
-ゲスト様<br>
-ユーザID<input type="text" name="userid"><br>
-パスワード<input type="password" name="userpassword"><br>
-<input type="image" src="../image/login.png" alt="送信する" align="middle" width="95" height="30">
-</form>
-</div>
 
-<br>
+
+<div id="kennsaku">
+<div id="menuber">
 <div id="menu" >
 <ul>
-<li><a href="../html/mypage.html">マイページ</a></li>
-<li><a href="../html/newmenber.html">新規登録</a></li>
 <li><a href="../html/annai.html">ご利用案内</a></li>
 <li><a href="../html/toiawase.html">お問い合わせ</a></li>
 </ul>
 </div>
+</div>
+<div id="kensakuform">
 <form name="searchform4" id="searchform4" method="POST" action="#" >
 <input name="keywords4" id="keywords4" value="" type="text" />
 <input type="image" src="../image/btn4.gif" alt="検索" name="searchBtn4" id="searchBtn4" />
 </form>
-<br>
-<br>
+</div>
+<div class="sab" id="sab" >
+<a href="../html/cart.html"><img src="../image/cart.png"  width="120" height="35"></a>
+<a href="../html/goodshistory.html"><img src="../image/rireki.png"  width="120" height="35"></a>
+</div>
+
+</div>
+
+
 
 <div id="anime">
 <div id="animetitle">
-<table width="150" >
+<table width="200" style="margin-left:10px;" >
 <tr valign="middle">
-<td colspan="3" align="center"height="20">アニメ50音リスト</td>
+<td colspan="3" height="20">アニメ一覧</td>
 </tr>
 <tr valign="middle">
-<td align="center" height="20"><a href="#">あ行</a></td><td align="center"><a href="#">か行</a></td><td align="center"><a href="#">さ行</a></td>
+<td align="left" height="20"><a href="#">ジョジョの奇妙な冒険</a></td>
 </tr>
 <tr valign="middle">
-<td align="center" height="20"><a href="#">た行</a></td><td align="center"><a href="#">な行</a></td><td align="center"><a href="#">は行</a></td>
+<td align="left" height="20"><a href="#">ドラゴンボール</a></td>
 </tr>
 <tr valign="middle">
-<td align="center" height="20"><a href="#">ま行</a></td><td align="center"><a href="#">や行</a></td><td align="center"><a href="#">ら行</a></td>
+<td align="left" height="20"><a href="#">BLACK LAGOON</a></td>
 </tr>
 <tr valign="middle">
-<td align="center" height="20"><a href="#">わ行</a></td><td colspan="2" align="center"><a href="#">アニメ一覧</a></td>
+<td align="left" height="20"><a href="#">魔法少女まどか☆マギカ</a></td>
 </tr>
 </table>
 </div>
+<div id="mannaka">
 <div id="animeosusume">
-<div id="slide01">
-<ul>
-<li><a href="#"><img src="../image/img01.gif" width="700" height="426" alt=""></a></li>
-<li><a href="#"><img src="../image/img02.gif" width="700" height="426" alt=""></a></li>
-<li><a href="#"><img src="../image/img03.gif" width="700" height="426" alt=""></a></li>
-<li><a href="#"><img src="../image/img04.gif" width="700" height="426" alt=""></a></li>
-<li><a href="#"><img src="../image/img05.gif" width="700" height="426" alt=""></a></li>
-</ul>
+<div align="center">
+<table>
+<p class="f1">
+<font color="#FF0000">ログイン</font>➨商品情報➨支払い・配送方法➨完了
+</p>
+<tr>
+<td align="left">メールアドレス</td><td align="left"><input type="text" name="useremail" size="30"></td>
+</tr>
+<tr>
+<td align="left">パスワード</td><td align="left"><input type="password" name="userpassword"></td>
+</tr>
+<td colspan="2" style="text-align: center;"><input type="submit" value="商品情報へ"></td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div id="animekoukoku">
+<?php
+//セッションのユーザ名とユーザIDが存在しなかった場合
+if (!isset($_SESSION['username']) && !isset($_SESSION['userid'])){
+	print "<center>
+			<form action=\"../php/login.php\" method=\"post\">
+			<table>
+			<tr><td>メールアドレス：</td></tr>
+			<tr><td><input type=\"text\" name=\"useremail\" size=\"25\"></td></tr>
+			<tr><td>パスワード：</td></tr>
+			<tr><td><input type=\"password\" name=\"userpassword\" size=\"26\"></td></tr>
+			</table>
+			<input type=\"submit\" class=\"classname\" value=\"ログイン\">
+			</form>
+			<a href=\"newmember.html\" class=\"classname\">新規登録</a>
+			</center>";
+}
+//セッションのユーザ名とユーザIDが存在した場合
+elseif (isset($_SESSION['username']) && isset($_SESSION['userid'])){
+	print "<center>ようこそ";
+	print $_SESSION['username'];
+	print "さん";
+	print "<form action=\"../php/logout.php\" method=\"post\">
+			<input type=\"submit\" class=\"classname\" value=\"ログアウト\">
+			</form></center>";
+}
+//エラーメッセージが存在した場合
+if (isset($_SESSION['errormessage'])){
+	print $_SESSION['errormessage'];
+	//セッション"errormessage"を削除する
+	unset($_SESSION['errormessage']);
+}
+?>
+
+
 </div>
 </div>
 
 
-
+</div>
 
 </body>
 </html>
