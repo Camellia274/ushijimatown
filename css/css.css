@@ -7,6 +7,15 @@ body
      margin-right:auto;
      width:1300px;
 }
+
+p.f1 { font-size: xx-large; }
+p.f2 { font-size: x-large; }
+p.f3 { font-size: large; }
+p.f4 { font-size: medium; }
+p.f5 { font-size: small; }
+p.f6 { font-size: x-small; }
+p.f7 { font-size: xx-small; }
+
 span.midasi {
 font-weight: 900;
 font-size: 20px;
