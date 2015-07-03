@@ -11,7 +11,7 @@ if ($_POST['userpassword'] != $_POST['userpasswordcheck']){
 	$GLOBALS['message'] = "パスワードと確認用パスワードが一致しません";
 
 	//セッションにメッセージを格納
-	$_SESSION['message'] = $GLOBALS['message'];
+	$_SESSION['newmembermessage'] = $GLOBALS['message'];
 
 	//新規登録画面へ戻る
 	header('location: ../html/newmember.html');

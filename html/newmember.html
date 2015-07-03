@@ -189,9 +189,10 @@ $(function(){
 <table>
 <tr><td colspan="2">新規登録</td></tr>
 <tr>
-<td colspan="2"><?php if(isset($_SESSION['message'])){
-						print $_SESSION['message'];
-						unset($_SESSION['message']);
+<td colspan="2"><?php if(isset($_SESSION['newmembermessage'])){
+						print $_SESSION['newmembermessage'];
+						//セッション"newmembermessage"を削除する
+						unset($_SESSION['newmembermessage']);
 						} ?></td>
 </tr>
 <tr>
