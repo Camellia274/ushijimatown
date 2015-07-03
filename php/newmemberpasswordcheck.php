@@ -13,6 +13,16 @@ if ($_SESSION['userpassword'] != $_SESSION['userpasswordcheck']){
 	//セッションにメッセージを格納
 	$_SESSION['newmembermessage'] = $GLOBALS['message'];
 
+	//ユーザ入力値のセッションを削除
+	unset($_SESSION['useremail']);
+	unset($_SESSION['userpassword']);
+	unset($_SESSION['userpasswordcheck']);
+	unset($_SESSION['name']);
+	unset($_SESSION['kana']);
+	unset($_SESSION['postno']);
+	unset($_SESSION['address']);
+	unset($_SESSION['telno']);
+
 	//新規登録画面へ戻る
 	header('location: ../html/newmember.html');
 	exit();

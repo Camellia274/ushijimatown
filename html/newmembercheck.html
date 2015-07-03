@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<?php
+//セッションを開始する
+session_start();
+?>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/reset.css" type="text/css" />
 <link rel="stylesheet" href="../css/css.css" type="text/css" />
@@ -117,11 +121,6 @@ $(function(){
 </script>
 </head>
 <body>
-<?php
-//セッションを開始する
-session_start();
-?>
-
 <div class="main">
 <!--ヘッダーここから-->
 <a name="top" id="top"></a>
@@ -184,7 +183,7 @@ session_start();
 <div id="mannaka">
 <div id="animeosusume">
 <div align="center">
-<form action="" method="post">
+<form action="../php/newmemberregistration.php" method="post">
 <table>
 <tr><td colspan="2">確認画面</td></tr>
 <tr>
