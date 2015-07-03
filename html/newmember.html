@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<?php
+//セッションを開始する
+session_start();
+?>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/reset.css" type="text/css" />
 <link rel="stylesheet" href="../css/css.css" type="text/css" />
@@ -117,10 +121,6 @@ $(function(){
 </script>
 </head>
 <body>
-<?php
-//セッションを開始する
-session_start();
-?>
 
 <div class="main">
 <!--ヘッダーここから-->
@@ -185,9 +185,15 @@ session_start();
 <div id="mannaka">
 <div id="animeosusume">
 <div align="center">
-<form action="newmembercheck.html" method="post">
+<form action="../php/newmemberpasswordcheck.php" method="post">
 <table>
 <tr><td colspan="2">新規登録</td></tr>
+<tr>
+<td colspan="2"><?php if(isset($_SESSION['message'])){
+						print $_SESSION['message'];
+						unset($_SESSION['message']);
+						} ?></td>
+</tr>
 <tr>
 <td align="left">メールアドレス</td><td align="left"><input type="text" name="useremail" size="30"></td>
 </tr>

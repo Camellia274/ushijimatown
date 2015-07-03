@@ -188,25 +188,25 @@ session_start();
 <table>
 <tr><td colspan="2">確認画面</td></tr>
 <tr>
-<td align="left">メールアドレス</td><td><?php print $_POST['useremail']; ?></td>
+<td align="left">メールアドレス</td><td><?php print $_SESSION['useremail']; ?></td>
 </tr>
 <tr>
-<td align="left">パスワード</td><td><?php print $_POST['userpassword']; ?></td>
+<td align="left">パスワード</td><td>************</td>
 </tr>
 <tr>
-<td align="left">氏名</td><td><?php print $_POST['name']; ?></td>
+<td align="left">氏名</td><td><?php print $_SESSION['name']; ?></td>
 </tr>
 <tr>
-<td align="left">フリガナ</td><td><?php print $_POST['kana']; ?></td>
+<td align="left">フリガナ</td><td><?php print $_SESSION['kana']; ?></td>
 </tr>
 <tr>
-<td align="left">郵便番号</td><td><?php print $_POST['postno']; ?></td>
+<td align="left">郵便番号</td><td><?php print $_SESSION['postno']; ?></td>
 </tr>
 <tr>
-<td align="left">住所</td><td><?php print $_POST['address']; ?></td>
+<td align="left">住所</td><td><?php print $_SESSION['address']; ?></td>
 </tr>
 <tr>
-<td align="left">電話番号</td><td><?php print $_POST['telno']; ?></td>
+<td align="left">電話番号</td><td><?php print $_SESSION['telno']; ?></td>
 </tr>
 <tr>
 <td colspan="2" style="text-align: center;"><input type="submit" value="登録する"></td>
