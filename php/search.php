@@ -165,7 +165,7 @@ $(function(){
 </div>
 </div>
 <div id="kensakuform">
-<form name="searchform" id="searchform4" method="POST" action="../php/search.php" >
+<form name="searchform" id="searchform4" method="POST" action="#" >
 <input name="keywords" id="keywords4" value="" type="text" />
 <input type="image" src="../image/btn4.gif" alt="検索" name="searchBtn4" id="searchBtn4" />
 </form>
@@ -200,17 +200,25 @@ $(function(){
 </table>
 </div>
 <div id="mannaka">
-<div id="animeosusume">
-<div id="slide01">
-<ul>
-<li><a href="#"><img src="../image/img01.gif" width="870" height="600" alt=""></a></li>
-<li><a href="#"><img src="../image/img02.gif" width="870" height="600" alt=""></a></li>
-<li><a href="#"><img src="../image/img03.gif" width="870" height="600" alt=""></a></li>
-<li><a href="#"><img src="../image/img04.gif" width="870" height="600" alt=""></a></li>
-<li><a href="#"><img src="../image/img05.gif" width="870" height="600" alt=""></a></li>
-</ul>
-</div>
-</div>
+<?php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
 </div>
 <div id="animekoukoku">
 <?php
