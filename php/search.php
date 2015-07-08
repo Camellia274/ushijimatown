@@ -165,7 +165,7 @@ $(function(){
 </div>
 </div>
 <div id="kensakuform">
-<form name="searchform" id="searchform4" method="POST" action="#" >
+<form name="searchform" id="searchform4" method="POST" action="../php/search.php" >
 <input name="keywords" id="keywords4" value="" type="text" />
 <input type="image" src="../image/btn4.gif" alt="検索" name="searchBtn4" id="searchBtn4" />
 </form>
@@ -201,10 +201,50 @@ $(function(){
 </div>
 <div id="mannaka">
 <?php
+//グローバル変数
+$goods_id = null;
 
+//商品検索
+function search(){
+	// mysqliクラスのオブジェクトを作成
+	$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
+	if ($mysqli->connect_error) {
+		echo $mysqli->connect_error;
+		exit();
+	}
+	else {
+		$mysqli->set_charset("utf8");
+	}
 
+	// ここにDB処理いろいろ書く
+	$sql = "SELECT g.goods_id, g.goods_name, g.goods_explanation, g.price, g.size, g.stock_quantity, g.image_url, "
+			+ "a.anime_title "
+			+ "FROM goods g JOIN anime a "
+			+ "ON(g.anime_id = a.anime_id) "
+			+ "WHERE g.goods_name LIKE %?% "
+			+ "OR a.anime_title LIKE %?%";
+	if ($stmt = $mysqli->prepare($sql)) {
+		// 条件値をSQLにバインドする
+		$stmt->bind_param("ss", $_POST['keywords'], $_POST['keywords']);
 
+		// 実行
+		$stmt->execute();
 
+		// 取得結果を変数にバインドする
+		$stmt->bind_result($g.goods_id);
+		while ($stmt->fetch()) {
+			echo $g.goods_id;
+			$GLOBALS['goods_id'] = $g.goods_id;
+		}
+		$stmt->close();
+	}
+	// DB接続を閉じる
+	$mysqli->close();
+}
+
+echo  $_POST['keywords'];
+search();
+echo  $goods_id;
 
 
 
