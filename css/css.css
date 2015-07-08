@@ -165,6 +165,9 @@ float:right;
 }
 /*******↑カート・購入履歴*******/
 /***********↓固定↓*************/
+#monsto{
+	position: static;
+}
 #anime{
 width : 1300px;
 height:600px

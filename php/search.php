@@ -165,7 +165,7 @@ $(function(){
 </div>
 </div>
 <div id="kensakuform">
-<form name="searchform" id="searchform4" method="POST" action="../php/search.php" >
+<form name="searchform" id="searchform4" method="POST" action="#" >
 <input name="keywords" id="keywords4" value="" type="text" />
 <input type="image" src="../image/btn4.gif" alt="検索" name="searchBtn4" id="searchBtn4" />
 </form>
@@ -200,24 +200,25 @@ $(function(){
 </table>
 </div>
 <div id="mannaka">
-<div align="center">
+<?php
 
-<div id="site-box">
-<div id="a-box">
-<br><br><br><br><br>
-<h1>カートに入っている商品情報を表示する</h1>
 
-</div>
-<div id="b-box">
-<p>
-<br><br><br><br><br>
-<br><br><br><br><br>
-<input type="button" name="button" value="買い物に進む" onclick="" style="width:100px;" /><br><br>
-<input type="button" name="button" value="TOPへ" onclick="../html/toiawase.html" style="width:100px;" />
-</p>
-</div>
-</div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
 </div>
 <div id="animekoukoku">
 <?php
@@ -253,13 +254,13 @@ if (isset($_SESSION['errormessage'])){
 }
 ?>
 <br>
-<div id="monsto">
 <ul randomdisplay="3" class="sample-list">
-<li><a href="http://www.monster-strike.com/"><img src="../image/izanagi001.jpg" width="190" height="60" /></a></li>
-<li><a href="http://www.monster-strike.com/"><img src="../image/images.jpg" width="190" height="60" /></a></li>
-<li><a href="http://www.monster-strike.com/"><img src="../image/imagesragieri.jpg" width="190" height="60" /></a></li>
-<li><a href="http://www.monster-strike.com/"><img src="../image/201501291305027188.jpeg" width="190" height="60" /></a></li>
-<li><a href="http://www.monster-strike.com/"><img src="../image/20141118_1a.png" width="190" height="60" /></a></li>
+<li><img src="../image/izanagi001.jpg" width="190" height="60" /></li>
+<li><img src="../image/images.jpg" width="190" height="60" /></li>
+<li><img src="../image/imagesragieri.jpg" width="190" height="60" /></li>
+<li><img src="../image/201501291305027188.jpeg" width="190" height="60" /></li>
+<li><img src="../image/20141118_1a.png" width="190" height="60" /></li>
+
 </ul>
 </div>
 </div>
