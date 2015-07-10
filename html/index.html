@@ -230,12 +230,15 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['userid'])){
 }
 //セッションのユーザ名とユーザIDが存在した場合
 elseif (isset($_SESSION['username']) && isset($_SESSION['userid'])){
-	print "<center>ようこそ";
+	print "<br><center>ようこそ";
 	print $_SESSION['username'];
-	print "さん";
-	print "<form action=\"../php/logout.php\" method=\"post\">
+	print "さん<br><br>";
+	print $_SESSION['point'];
+	print "pt<br>";
+	print "<br><form action=\"../php/logout.php\" method=\"post\">
 			<input type=\"submit\" class=\"classname\" value=\"ログアウト\">
-			</form></center>";
+			</form><br>";
+	print "<input type=\"button\" class=\"classname\" value=\"会員設定\"></center><br><br><br>";
 }
 //エラーメッセージが存在した場合
 if (isset($_SESSION['errormessage'])){

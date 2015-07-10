@@ -5,6 +5,7 @@
 	$userpassword = null;
 	$username = null;
 	$errormessage = null;
+	$point = null;
 
 	//ログイン処理
 	function login(){
@@ -19,7 +20,7 @@
 		}
 
 		// ここにDB処理いろいろ書く
-		$sql = "SELECT member_id, email_address, password, name FROM member WHERE email_address=? AND password=?";
+		$sql = "SELECT member_id, email_address, password, name, point FROM member WHERE email_address=? AND password=?";
 		if ($stmt = $mysqli->prepare($sql)) {
 			// 条件値をSQLにバインドする
 			$stmt->bind_param("ss", $_POST['useremail'], $_POST['userpassword']);
@@ -28,8 +29,9 @@
 			$stmt->execute();
 
 			// 取得結果を変数にバインドする
-			$stmt->bind_result($member_id, $email_address, $password, $name);
+			$stmt->bind_result($member_id, $email_address, $password, $name, $point );
 			while ($stmt->fetch()) {
+				$GLOBALS['point'] = $point;
 				$GLOBALS['userid']  = $member_id;
 				$GLOBALS['useremail'] = $email_address;
 				$GLOBALS['userpassword'] = $password;
@@ -53,6 +55,7 @@
 			//セッションにユーザIDとユーザパスワードを入れる
 			$_SESSION['userid'] = $GLOBALS['userid'];
 			$_SESSION['username'] = $GLOBALS['username'];
+			$_SESSION['point'] = $GLOBALS['point'];
 		}
 		else {
 			//グローバル変数にエラーメッセージを格納する
