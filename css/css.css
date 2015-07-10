@@ -164,6 +164,23 @@ float:right;
 
 }
 /*******↑カート・購入履歴*******/
+/************↓スクロール↓**********/
+.animebox {
+
+width:870px; /* 横幅 */
+height:600px; /* 縦幅 */
+overflow:auto;
+background-color:#FFF; /* 背景色 */
+border:1px #F0F0F0 dashed; /* 枠 */
+color:#000000; /* 文字色 */
+}
+.animebox p {
+margin:1em 10px; /* 行間 */
+}
+#animelist{
+margin-left:100px;
+}
+/************↑スクロール↑**********/
 /***********↓固定↓*************/
 #monsto{
 	position: static;
@@ -182,9 +199,7 @@ height: 600px;
 margin:5px;
 }
 #mannaka{
-
-	border:1px  solid #c0c0c0;
-
+border:1px  solid #c0c0c0;
 margin:5px;
 width:870px;
 height: 600px;
