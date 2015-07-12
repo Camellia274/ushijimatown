@@ -148,7 +148,7 @@ $(function(){
 <div id="header">
 <!--タイトルロゴここから-->
 <div class="header" id="header_left">
-<a href="../html/index.html"><img src="../image/rogo.png" alt="rogo" width="350" height="200">
+<a href="/ushijimatown/html/index.html"><img src="../image/rogo.png" alt="rogo" width="350" height="200">
 </a></div>
 <!--タイトルロゴここまで-->
 </div>
@@ -165,8 +165,8 @@ $(function(){
 </div>
 </div>
 <div id="kensakuform">
-<form name="searchform" id="searchform4" method="POST" action="search.php" >
-<input name="keywords" id="keywords4" value="" type="text" />
+<form name="searchform" id="searchform4" method="GET" action="../php/search.php" >
+<input name="keywords" id="keywords4" type="text" />
 <input type="image" src="../image/btn4.gif" alt="検索" name="searchBtn4" id="searchBtn4" />
 </form>
 </div>
@@ -195,7 +195,7 @@ $(function(){
 <td align="left" height="20"><a href="#">BLACK LAGOON</a></td>
 </tr>
 <tr valign="middle">
-<td align="left" height="20"><a href="#">魔法少女まどか☆マギカ</a></td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=魔法少女まどか☆マギカ">魔法少女まどか☆マギカ</a></td>
 </tr>
 </table>
 </div>
@@ -259,7 +259,7 @@ function search(){
 	$mysqli->close();
 }
 
-$keyword = "%".$_POST['keywords']."%";
+$keyword = "%".$_GET['keywords']."%";
 search();
 ?>
 </div>
@@ -278,17 +278,20 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['userid'])){
 			</table><br>
 			<input type=\"submit\" class=\"classname\" value=\"ログイン\">
 			</form><br>
-			<a href=\"newmember.html\" class=\"classname\">新規登録</a>
+			<a href=\"/ushijimatown/html/newmember.html\" class=\"classname\">新規登録</a>
 			</center>";
 }
 //セッションのユーザ名とユーザIDが存在した場合
 elseif (isset($_SESSION['username']) && isset($_SESSION['userid'])){
-	print "<center>ようこそ";
+	print "<br><center>ようこそ";
 	print $_SESSION['username'];
-	print "さん";
-	print "<form action=\"../php/logout.php\" method=\"post\">
+	print "さん<br><br>";
+	print $_SESSION['point'];
+	print "pt<br>";
+	print "<br><form action=\"../php/logout.php\" method=\"post\">
 			<input type=\"submit\" class=\"classname\" value=\"ログアウト\">
-			</form></center>";
+			</form><br>";
+	print "<input type=\"button\" class=\"classname\" value=\"会員設定\"></center><br><br><br>";
 }
 //エラーメッセージが存在した場合
 if (isset($_SESSION['errormessage'])){
