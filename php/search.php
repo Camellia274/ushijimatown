@@ -243,15 +243,21 @@ function search(){
 		// 取得結果を変数にバインドする
 		$stmt->bind_result($id, $name, $explanation, $price, $size, $stock_quantity, $image_url, $title);
 		while ($stmt->fetch()) {
-			//$GLOBALS['goods_id'] = $id;
-			print $id."<br>";
-			print $name."<br>";
-			print $explanation."<br>";
-			print $price."<br>";
-			print $size."<br>";
-			print $stock_quantity."<br>";
-			print "<img src=\"$image_url\" alt=\"商品画像\" height=\"200px\" width=\"150px\">"."<br>";
-			print $title."<br>";
+			$a = $price."円";	//価格
+			$b = $stock_quantity."個";	//在庫数量
+
+			print "<form action=\"\" method=\"post\">
+				   <table>
+				   <tr><td colspan=\"2\"><img src=\"$image_url\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></td></tr>
+				   <tr><td>アニメタイトル</td><td>$title</td></tr>
+        		   <tr><td>商品名</td><td>$name</td></tr>
+        		   <tr><td>価格</td><td>$a</td></tr>
+        		   <tr><td>商品説明</td><td>$explanation</td></tr>
+        		   <tr><td>商品サイズ</td><td>$size</td></tr>
+        		   <tr><td>在庫数</td><td>$b</td></tr>
+				   <tr><td colspan=\"2\" align=\"center\"><input type=\"submit\" value=\"カートに入れる\"></td></tr>
+				   </table>
+				   </form>";
 		}
 		$stmt->close();
 	}
