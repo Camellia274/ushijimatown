@@ -204,6 +204,10 @@ margin-left:100px;
 }
 /************↑お問い合わせ↑***********/
 /***********↓固定↓*************/
+#animeitiran{
+margin:10px 30px 10px 30px;
+border:1px  solid #c0c0c0;
+}
 #annai{
 margin-left:50px;
 }
