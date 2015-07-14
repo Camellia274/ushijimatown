@@ -238,7 +238,7 @@ elseif (isset($_SESSION['username']) && isset($_SESSION['userid'])){
 	print "<br><form action=\"/ushijimatown/php/logout.php\" method=\"post\">
 			<input type=\"submit\" class=\"classname\" value=\"ログアウト\">
 			</form><br>";
-	print "<input type=\"button\" class=\"classname\" value=\"会員設定\"></center><br><br><br>";
+	print "<a href=\"/ushijimatown/html/menberinfochange.html\" class=\"classname\">会員設定</a></center><br><br><br>";
 }
 //エラーメッセージが存在した場合
 if (isset($_SESSION['errormessage'])){

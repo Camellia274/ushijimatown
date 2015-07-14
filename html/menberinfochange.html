@@ -6,12 +6,12 @@
 session_start();
 ?>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/reset.css" type="text/css" />
-<link rel="stylesheet" href="../css/css.css" type="text/css" />
+<link rel="stylesheet" href="/ushijimatown/css/reset.css" type="text/css" />
+<link rel="stylesheet" href="/ushijimatown/css/css.css" type="text/css" />
 <title>フィギュア専門店うしぢまタウン</title>
-<script type="text/javascript" src="../plugin/jquery.js"></script>
-<script type="text/javascript" src="../plugin/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="../plugin/sliders.js"></script>
+<script type="text/javascript" src="/ushijimatown/plugin/jquery.js"></script>
+<script type="text/javascript" src="/ushijimatown/plugin/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/ushijimatown/plugin/sliders.js"></script>
 <script type="text/javascript">
 jQuery(function($) {
 	$.fn.extend({
@@ -148,7 +148,7 @@ $(function(){
 <div id="header">
 <!--タイトルロゴここから-->
 <div class="header" id="header_left">
-<a href="../html/index.html"><img src="../image/rogo.png" alt="rogo" width="350" height="200">
+<a href="/ushijimatown/html/index.html"><img src="../image/rogo.png" alt="rogo" width="350" height="200">
 </a></div>
 <!--タイトルロゴここまで-->
 </div>
@@ -165,8 +165,8 @@ $(function(){
 </div>
 </div>
 <div id="kensakuform">
-<form name="searchform" id="searchform4" method="POST" action="../php/search.php" >
-<input name="keywords" id="keywords4" value="" type="text" />
+<form name="searchform" id="searchform4" method="GET" action="/ushijimatown/php/search.php" >
+<input name="keywords" id="keywords4" type="text" />
 <input type="image" src="../image/btn4.gif" alt="検索" name="searchBtn4" id="searchBtn4" />
 </form>
 </div>
@@ -195,11 +195,62 @@ $(function(){
 <td align="left" height="20"><a href="#">BLACK LAGOON</a></td>
 </tr>
 <tr valign="middle">
-<td align="left" height="20"><a href="#">魔法少女まどか☆マギカ</a></td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=魔法少女まどか☆マギカ">魔法少女まどか☆マギカ</a></td>
 </tr>
 </table>
 </div>
 <div id="mannaka">
+
+<div align="center">
+<form action="#" method="post">
+<br><center><span class="midasi" >会員設定変更</span></center><br>
+<table>
+<tr><td></td></tr>
+<tr>
+<td colspan="2"><?php if(isset($_SESSION['newmembermessage'])){
+						print $_SESSION['newmembermessage'];
+						//セッション"newmembermessage"を削除する
+						unset($_SESSION['newmembermessage']);
+						} ?></td>
+</tr>
+<tr>
+<td align="left">メールアドレス</td><td align="left"><input type="text" name="useremail"
+												style="width: 200px" placeholder="例)abcdef@gmail.com"></td>
+</tr>
+<tr>
+<td align="left">パスワード</td><td align="left"><input type="password" name="userpassword"
+													style="width: 200px"></td>
+</tr>
+<tr>
+<td align="left">パスワード(確認用)</td><td align="left"><input type="password" name="userpasswordcheck"
+						style="width: 200px" placeholder="もう一度パスワードを入力してください"></td>
+</tr>
+<tr>
+<td align="left">氏名</td><td align="left"><input type="text" name="name" size="31" style="width: 200px"
+															placeholder="例)麻生花子"></td>
+</tr>
+<tr>
+<td align="left">フリガナ</td><td align="left"><input type="text" name="kana" style="width: 200px"
+													placeholder="例)アソウハナコ"></td>
+</tr>
+<tr>
+<td align="left">郵便番号</td><td align="left"><input type="text" name="postno" maxlength="8"
+													style="width: 200px" placeholder="例)812-8512"></td>
+</tr>
+<tr>
+<td align="left">住所</td><td align="left"><textarea name="address" rows="4" cols="25" style="width: 200px"
+									placeholder="例)福岡県福岡市博多区博多駅前２丁目９の３"></textarea></td>
+</tr>
+<tr>
+<td align="left">電話番号</td><td align="left"><input type="text" name="telno" style="width: 200px"
+													placeholder="例)092-441-2131"></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;"><input type="submit" value="確認画面へ"></td>
+</tr>
+</table>
+</form>
+</div>
 
 </div>
 <div id="animekoukoku">
@@ -207,7 +258,7 @@ $(function(){
 //セッションのユーザ名とユーザIDが存在しなかった場合
 if (!isset($_SESSION['username']) && !isset($_SESSION['userid'])){
 	print "<center>
-			<form action=\"../php/login.php\" method=\"post\">
+			<form action=\"/ushijimatown/php/login.php\" method=\"post\">
 			<br><table class=\"loginform\">
 			<tr><td>メールアドレス：</td></tr>
 			<tr><td><input type=\"text\" name=\"useremail\" style=\"width: 170px\"></td></tr>
@@ -216,7 +267,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['userid'])){
 			</table><br>
 			<input type=\"submit\" class=\"classname\" value=\"ログイン\">
 			</form><br>
-			<a href=\"newmember.html\" class=\"classname\">新規登録</a>
+			<a href=\"/ushijimatown/html/newmember.html\" class=\"classname\">新規登録</a>
 			</center>";
 }
 //セッションのユーザ名とユーザIDが存在した場合
@@ -226,7 +277,7 @@ elseif (isset($_SESSION['username']) && isset($_SESSION['userid'])){
 	print "さん<br><br>";
 	print $_SESSION['point'];
 	print "pt<br>";
-	print "<br><form action=\"../php/logout.php\" method=\"post\">
+	print "<br><form action=\"/ushijimatown/php/logout.php\" method=\"post\">
 			<input type=\"submit\" class=\"classname\" value=\"ログアウト\">
 			</form><br>";
 	print "<input type=\"button\" class=\"classname\" value=\"会員設定\"></center><br><br><br>";
