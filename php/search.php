@@ -6,12 +6,12 @@
 session_start();
 ?>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/reset.css" type="text/css" />
-<link rel="stylesheet" href="../css/css.css" type="text/css" />
+<link rel="stylesheet" href="/ushijimatown/css/reset.css" type="text/css" />
+<link rel="stylesheet" href="/ushijimatown/css/css.css" type="text/css" />
 <title>フィギュア専門店うしぢまタウン</title>
-<script type="text/javascript" src="../plugin/jquery.js"></script>
-<script type="text/javascript" src="../plugin/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="../plugin/sliders.js"></script>
+<script type="text/javascript" src="/ushijimatown/plugin/jquery.js"></script>
+<script type="text/javascript" src="/ushijimatown/plugin/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/ushijimatown/plugin/sliders.js"></script>
 <script type="text/javascript">
 jQuery(function($) {
 	$.fn.extend({
@@ -165,7 +165,7 @@ $(function(){
 </div>
 </div>
 <div id="kensakuform">
-<form name="searchform" id="searchform4" method="GET" action="../php/search.php" >
+<form name="searchform" id="searchform4" method="GET" action="/ushijimatown/php/search.php" >
 <input name="keywords" id="keywords4" type="text" />
 <input type="image" src="../image/btn4.gif" alt="検索" name="searchBtn4" id="searchBtn4" />
 </form>
@@ -181,18 +181,18 @@ $(function(){
 
 <div id="anime">
 <div id="animetitle">
+<div id="animeitiran"><center><a href="animelist.html">アニメ一覧</a></center></div>
+
+
 <table width="200" style="margin-left:10px;" >
 <tr valign="middle">
-<td colspan="3" height="20">アニメ一覧</td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=ジョジョの奇妙な冒険">ジョジョの奇妙な冒険</a></td>
 </tr>
 <tr valign="middle">
-<td align="left" height="20"><a href="#">ジョジョの奇妙な冒険</a></td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=ドラゴンボール">ドラゴンボール</a></td>
 </tr>
 <tr valign="middle">
-<td align="left" height="20"><a href="#">ドラゴンボール</a></td>
-</tr>
-<tr valign="middle">
-<td align="left" height="20"><a href="#">BLACK LAGOON</a></td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=BLACK LAGOON">BLACK LAGOON</a></td>
 </tr>
 <tr valign="middle">
 <td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=魔法少女まどか☆マギカ">魔法少女まどか☆マギカ</a></td>
@@ -200,6 +200,9 @@ $(function(){
 </table>
 </div>
 <div id="mannaka">
+<div class="animebox">
+<div id="animelist">
+
 <?php
 //グローバル変数
 $keyword = null;
@@ -246,9 +249,9 @@ function search(){
 			$a = $price."円";	//価格
 			$b = $stock_quantity."個";	//在庫数量
 
-			print "<form action=\"\" method=\"post\">
-				   <table>
-				   <tr><td colspan=\"2\"><img src=\"$image_url\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></td></tr>
+			print "<div id=\"animezentai\"><br><br><div id=\"animegazou\"><img src=\"$image_url\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div><form action=\"\" method=\"post\">
+					<div id=\"animebun\">
+				   <br><br><table>
 				   <tr><td>アニメタイトル</td><td>$title</td></tr>
         		   <tr><td>商品名</td><td>$name</td></tr>
         		   <tr><td>価格</td><td>$a</td></tr>
@@ -256,9 +259,10 @@ function search(){
         		   <tr><td>商品サイズ</td><td>$size</td></tr>
         		   <tr><td>在庫数</td><td>$b</td></tr>
 				   <tr><td colspan=\"2\" align=\"center\"><input type=\"submit\" value=\"カートに入れる\"></td></tr>
-				   </table>
-				   </form>";
+				   </table></div>
+				   </form></div>";
 		}
+
 		$stmt->close();
 	}
 	// DB接続を閉じる
@@ -268,14 +272,17 @@ function search(){
 $keyword = "%".$_GET['keywords']."%";
 search();
 ?>
-</div>
 
+
+</div>
+</div>
+</div>
 <div id="animekoukoku">
 <?php
 //セッションのユーザ名とユーザIDが存在しなかった場合
 if (!isset($_SESSION['username']) && !isset($_SESSION['userid'])){
 	print "<center>
-			<form action=\"../php/login.php\" method=\"post\">
+			<form action=\"/ushijimatown/php/login.php\" method=\"post\">
 			<br><table class=\"loginform\">
 			<tr><td>メールアドレス：</td></tr>
 			<tr><td><input type=\"text\" name=\"useremail\" style=\"width: 170px\"></td></tr>
@@ -294,10 +301,10 @@ elseif (isset($_SESSION['username']) && isset($_SESSION['userid'])){
 	print "さん<br><br>";
 	print $_SESSION['point'];
 	print "pt<br>";
-	print "<br><form action=\"../php/logout.php\" method=\"post\">
+	print "<br><form action=\"/ushijimatown/php/logout.php\" method=\"post\">
 			<input type=\"submit\" class=\"classname\" value=\"ログアウト\">
 			</form><br>";
-	print "<input type=\"button\" class=\"classname\" value=\"会員設定\"></center><br><br><br>";
+	print "<a href=\"/ushijimatown/html/menberinfochange.html\" class=\"classname\">会員設定</a></center><br><br><br>";
 }
 //エラーメッセージが存在した場合
 if (isset($_SESSION['errormessage'])){
@@ -307,13 +314,13 @@ if (isset($_SESSION['errormessage'])){
 }
 ?>
 <br>
+<div id="monsto">
 <ul randomdisplay="3" class="sample-list">
-<li><img src="../image/izanagi001.jpg" width="190" height="60" /></li>
-<li><img src="../image/images.jpg" width="190" height="60" /></li>
-<li><img src="../image/imagesragieri.jpg" width="190" height="60" /></li>
-<li><img src="../image/201501291305027188.jpeg" width="190" height="60" /></li>
-<li><img src="../image/20141118_1a.png" width="190" height="60" /></li>
-
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/izanagi001.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/images.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/imagesragieri.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/201501291305027188.jpeg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/20141118_1a.png" width="190" height="60" /></a></li>
 </ul>
 </div>
 </div>

@@ -164,6 +164,25 @@ float:right;
 
 }
 /*******↑カート・購入履歴*******/
+/***********************/
+#animezentai {
+width:700px;
+height:450px;
+margin-top:10px;
+
+}
+#animegazou{
+width:300px;
+height:400px;
+float:left;
+}
+#animebun{
+width:300px;
+height:400px;
+float:left;
+margin-left:20px;
+}
+/***********************/
 /************↓スクロール↓**********/
 .animebox {
 
