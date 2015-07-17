@@ -259,6 +259,16 @@ function search(){
         		   <tr><td>商品説明</td><td>$explanation</td></tr>
         		   <tr><td>商品サイズ</td><td>$size</td></tr>
         		   <tr><td>在庫数</td><td>$b</td></tr>
+        		   <tr><td>数量</td>
+        		   	<td>
+        			<select>
+						<option value=\"1\">1</option>
+						<option value=\"2\">2</option>
+						<option value=\"3\">3</option>
+						<option value=\"4\">4</option>
+						<option value=\"5\">5</option>
+					</select>個
+        			</td></tr>
 				   <tr><td colspan=\"2\" align=\"center\"><input type=\"submit\" value=\"カートに入れる\"></td></tr>
 				   </table></div>
 				   </form></div>";
