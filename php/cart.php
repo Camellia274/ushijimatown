@@ -232,19 +232,18 @@ function cartselect(){
 				$b = $stock_quantity . "個";
 
 				print "<div id=\"animezentai\"><br><br><div id=\"animegazou\"><img src=\"$image_path\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div>
-				   <form action=\"\" method=\"post\">
-				   <div id=\"animebun\">
-				   <br><br>
-				   <table>
-				   <tr><td>アニメタイトル</td><td>$anime</td></tr>
-        		   <tr><td>商品名</td><td>$name</td></tr>
-        		   <tr><td>価格</td><td>$a</td></tr>
-        		   <tr><td>商品説明</td><td>$explanation</td></tr>
-        		   <tr><td>商品サイズ</td><td>$size</td></tr>
-        		   <tr><td>在庫数</td><td>$b</td></tr>
-        		   <tr><td>購入数</td><td>$GLOBALS[buyquantityview]</td></tr>
-				   </table></div>
-				   </form></div>";
+						<div id=\"animebun\">
+				   		<br><br>
+				   		<table>
+				   		<tr><td>アニメタイトル</td><td>$anime</td></tr>
+        		   		<tr><td>商品名</td><td>$name</td></tr>
+        		   		<tr><td>価格</td><td>$a</td></tr>
+        		   		<tr><td>商品説明</td><td>$explanation</td></tr>
+        		   		<tr><td>商品サイズ</td><td>$size</td></tr>
+        		   		<tr><td>在庫数</td><td>$b</td></tr>
+        		   		<tr><td>購入数</td><td>$GLOBALS[buyquantityview]</td></tr>
+				   		</table></div>
+				   		</div>";
 			}
 			$stmt->close();
 		}
