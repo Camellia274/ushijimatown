@@ -249,8 +249,9 @@ function search(){
 			$a = $price."円";	//価格
 			$b = $stock_quantity."個";	//在庫数量
 
-			print "<div id=\"animezentai\"><br><br><div id=\"animegazou\"><img src=\"$image_url\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div><form action=\"\" method=\"post\">
-					<div id=\"animebun\">
+			print "<div id=\"animezentai\"><br><br><div id=\"animegazou\"><img src=\"$image_url\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div>
+				   <form action=\"\" method=\"post\">
+				   <div id=\"animebun\">
 				   <br><br><table>
 				   <tr><td>アニメタイトル</td><td>$title</td></tr>
         		   <tr><td>商品名</td><td>$name</td></tr>
