@@ -171,7 +171,7 @@ $(function(){
 </form>
 </div>
 <div class="sab" id="sab" >
-<a href="../html/cart.html"><img src="../image/cart.png"  width="120" height="35"></a>
+<a href="/ushijimatown/php/cart.php"><img src="../image/cart.png"  width="120" height="35"></a>
 <a href="../html/goodshistory.html"><img src="../image/rireki.png"  width="120" height="35"></a>
 </div>
 
@@ -254,8 +254,10 @@ function cartselect(){
 $goodsid = null;
 $quantity = null;
 
-$goodsid = $_SESSION['cart'][0];
-$quantity = $_SESSION['cart'][1];
+if (isset($_SESSION['cart'])) {
+	$goodsid = $_SESSION['cart'][0];
+	$quantity = $_SESSION['cart'][1];
+}
 
 cartselect();
 ?>
