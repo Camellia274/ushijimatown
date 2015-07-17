@@ -171,7 +171,7 @@ $(function(){
 </form>
 </div>
 <div class="sab" id="sab" >
-<a href="../html/cart.html"><img src="../image/cart.png"  width="120" height="35"></a>
+<a href="/ushijimatown/php/cart.php"><img src="../image/cart.png"  width="120" height="35"></a>
 <a href="../html/goodshistory.html"><img src="../image/rireki.png"  width="120" height="35"></a>
 </div>
 
@@ -206,16 +206,6 @@ $(function(){
 <?php
 //グローバル変数
 $keyword = null;
-/*
-$goods_id = null;
-$goods_name = null;
-$goods_explanation = null;
-$price = null;
-$size = null;
-$stock_quantity = null;
-$image_url = null;
-$anime_title = null;
-*/
 
 //商品検索
 function search(){
@@ -250,7 +240,8 @@ function search(){
 			$b = $stock_quantity."個";	//在庫数量
 
 			print "<div id=\"animezentai\"><br><br><div id=\"animegazou\"><img src=\"$image_url\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div>
-				   <form action=\"\" method=\"post\">
+				   <form action=\"cartin.php\" method=\"post\">
+				   <input type=\"hidden\" name=\"goodsid\" value=\"$id\">
 				   <div id=\"animebun\">
 				   <br><br><table>
 				   <tr><td>アニメタイトル</td><td>$title</td></tr>
@@ -261,7 +252,7 @@ function search(){
         		   <tr><td>在庫数</td><td>$b</td></tr>
         		   <tr><td>数量</td>
         		   	<td>
-        			<select>
+        			<select name=\"quantity\">
 						<option value=\"1\">1</option>
 						<option value=\"2\">2</option>
 						<option value=\"3\">3</option>

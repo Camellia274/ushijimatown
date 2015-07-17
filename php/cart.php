@@ -186,13 +186,13 @@ $(function(){
 
 <table width="200" style="margin-left:10px;" >
 <tr valign="middle">
-<td align="left" height="20"><a href="#">ジョジョの奇妙な冒険</a></td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=ジョジョの奇妙な冒険">ジョジョの奇妙な冒険</a></td>
 </tr>
 <tr valign="middle">
-<td align="left" height="20"><a href="#">ドラゴンボール</a></td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=ドラゴンボール">ドラゴンボール</a></td>
 </tr>
 <tr valign="middle">
-<td align="left" height="20"><a href="#">BLACK LAGOON</a></td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=BLACK LAGOON">BLACK LAGOON</a></td>
 </tr>
 <tr valign="middle">
 <td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=魔法少女まどか☆マギカ">魔法少女まどか☆マギカ</a></td>
@@ -200,24 +200,66 @@ $(function(){
 </table>
 </div>
 <div id="mannaka">
-<div align="center">
+<?php
+//カートの商品を取得する
+function cartselect(){
+		// mysqliクラスのオブジェクトを作成
+		$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
+		if ($mysqli->connect_error) {
+			echo $mysqli->connect_error;
+			exit();
+		}
+		else {
+			$mysqli->set_charset("utf8");
+		}
 
-<div id="site-box">
-<div id="a-box">
-<br><br><br><br><br>
-<h1>カートに入っている商品情報を表示する</h1>
+		// ここにDB処理いろいろ書く
+		$sql = "SELECT g.goods_name, g.goods_explanation, g.price, g.size, g.stock_quantity, a.anime_title, g.image_url
+				FROM goods g JOIN anime a
+				ON(g.anime_id = a.anime_id)
+				WHERE goods_id = ?";
+		if ($stmt = $mysqli->prepare($sql)) {
+			// 条件値をSQLにバインドする
+			$stmt->bind_param("i", $GLOBALS['goodsid']);
 
-</div>
-<div id="b-box">
-<p>
-<br><br><br><br><br>
-<br><br><br><br><br>
-<input type="button" name="button" value="買い物に進む" onclick="" style="width:100px;" /><br><br>
-<input type="button" name="button" value="TOPへ" onclick="../html/toiawase.html" style="width:100px;" />
-</p>
-</div>
-</div>
-</div>
+			// 実行
+			$stmt->execute();
+
+			// 取得結果を変数にバインドする
+			$stmt->bind_result($name, $explanation, $price, $size, $stock_quantity, $anime, $image_path);
+			while ($stmt->fetch()) {
+				print "<div id=\"animezentai\"><br><br><div id=\"animegazou\"><img src=\"$image_path\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div>
+				   <form action=\"\" method=\"post\">
+				   <div id=\"animebun\">
+				   <br><br>
+				   <table>
+				   <tr><td>アニメタイトル</td><td>$anime</td></tr>
+        		   <tr><td>商品名</td><td>$name</td></tr>
+        		   <tr><td>価格</td><td>$price</td></tr>
+        		   <tr><td>商品説明</td><td>$explanation</td></tr>
+        		   <tr><td>商品サイズ</td><td>$size</td></tr>
+        		   <tr><td>在庫数</td><td>$stock_quantity</td></tr>
+        		   <tr><td>数量</td><td></td></tr>
+				   <tr><td colspan=\"2\" align=\"center\"><input type=\"submit\" value=\"うへへへへ\"></td></tr>
+				   </table></div>
+				   </form></div>";
+			}
+			$stmt->close();
+		}
+		// DB接続を閉じる
+		$mysqli->close();
+	}
+
+//グローバル変数
+$goodsid = null;
+$quantity = null;
+
+$goodsid = $_SESSION['cart'][0];
+$quantity = $_SESSION['cart'][1];
+
+cartselect();
+?>
+
 </div>
 <div id="animekoukoku">
 <?php

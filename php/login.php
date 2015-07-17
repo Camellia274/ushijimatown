@@ -29,7 +29,7 @@
 			$stmt->execute();
 
 			// 取得結果を変数にバインドする
-			$stmt->bind_result($member_id, $email_address, $password, $name, $point );
+			$stmt->bind_result($member_id, $email_address, $password, $name, $point);
 			while ($stmt->fetch()) {
 				$GLOBALS['point'] = $point;
 				$GLOBALS['userid']  = $member_id;
