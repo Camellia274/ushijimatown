@@ -250,7 +250,7 @@ function search(){
         		   <tr><td>商品説明</td><td>$explanation</td></tr>
         		   <tr><td>商品サイズ</td><td>$size</td></tr>
         		   <tr><td>在庫数</td><td>$b</td></tr>
-        		   <tr><td>数量</td>
+        		   <tr><td>購入数</td>
         		   	<td>
         			<select name=\"quantity\">
 						<option value=\"1\">1</option>

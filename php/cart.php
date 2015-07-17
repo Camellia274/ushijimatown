@@ -228,6 +228,9 @@ function cartselect(){
 			// 取得結果を変数にバインドする
 			$stmt->bind_result($name, $explanation, $price, $size, $stock_quantity, $anime, $image_path);
 			while ($stmt->fetch()) {
+				$a = $price . "円";
+				$b = $stock_quantity . "個";
+
 				print "<div id=\"animezentai\"><br><br><div id=\"animegazou\"><img src=\"$image_path\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div>
 				   <form action=\"\" method=\"post\">
 				   <div id=\"animebun\">
@@ -235,12 +238,11 @@ function cartselect(){
 				   <table>
 				   <tr><td>アニメタイトル</td><td>$anime</td></tr>
         		   <tr><td>商品名</td><td>$name</td></tr>
-        		   <tr><td>価格</td><td>$price</td></tr>
+        		   <tr><td>価格</td><td>$a</td></tr>
         		   <tr><td>商品説明</td><td>$explanation</td></tr>
         		   <tr><td>商品サイズ</td><td>$size</td></tr>
-        		   <tr><td>在庫数</td><td>$stock_quantity</td></tr>
-        		   <tr><td>数量</td><td></td></tr>
-				   <tr><td colspan=\"2\" align=\"center\"><input type=\"submit\" value=\"うへへへへ\"></td></tr>
+        		   <tr><td>在庫数</td><td>$b</td></tr>
+        		   <tr><td>購入数</td><td>$GLOBALS[buyquantityview]</td></tr>
 				   </table></div>
 				   </form></div>";
 			}
@@ -252,14 +254,16 @@ function cartselect(){
 
 //グローバル変数
 $goodsid = null;
-$quantity = null;
+$price = null;
+$buyquantity = null;
+$buyquantityview = null;
 
 if (isset($_SESSION['cart'])) {
 	$goodsid = $_SESSION['cart'][0];
-	$quantity = $_SESSION['cart'][1];
+	$buyquantity = $_SESSION['cart'][1];
+	$buyquantityview = $_SESSION['cart'][1] . "個";
+	cartselect();
 }
-
-cartselect();
 ?>
 
 </div>
