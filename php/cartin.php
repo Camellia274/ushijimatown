@@ -1,8 +1,28 @@
 <?php
 	session_start();
 
-	$_SESSION['cart'] = array($_POST['goodsid'], $_POST['quantity']);
+	if (!isset($_SESSION['cartgoodsid']) && !isset($_SESSION['cartquantity'])) {
+		$gid = array($_POST['goodsid']);
+		$q = array($_POST['quantity']);
 
-	header("location: ./cart.php");
-	exit();
+		$_SESSION['cartgoodsid'] = $gid;
+		$_SESSION['cartquantity'] = $q;
+
+		header("location: ./cart.php");
+		exit();
+	}
+
+	elseif (isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])) {
+		$gid = $_SESSION['cartgoodsid'];
+		$q = $_SESSION['cartquantity'];
+
+		array_push($gid, $_POST['goodsid']);
+		array_push($q, $_POST['quantity']);
+
+		$_SESSION['cartgoodsid'] = $gid;
+		$_SESSION['cartquantity'] = $q;
+
+		header("location: ./cart.php");
+		exit();
+	}
 ?>
