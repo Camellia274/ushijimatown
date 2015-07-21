@@ -200,14 +200,19 @@ $(function(){
 </table>
 </div>
 <div id="mannaka">
+<div class="animebox">
+<div id="animelist">
 <?php
 	if (!isset($_SESSION['cartgoodsid']) && !isset($_SESSION['cartquantity'])) {
-		print "カート内に商品が存在しません";
+		print "<br><br><br><div style=\"margin-left:250px\">カート内に商品が存在しません</div>";
 	}
 
 	elseif(isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])){
-		print "<form action=\"./cartdelete.php\" method=\"post\">
+		print "<form action=\"./cartdelete.php\" method=\"post\"><br>
 				<input type=\"submit\" value=\"カート内の商品をすべて削除する\">
+				</form>";
+		print "<form action=\"\" method=\"post\">
+				<input type=\"submit\" value=\"レジに進む\">
 				</form>";
 	}
 
@@ -276,7 +281,8 @@ $(function(){
 		}
 	}
 ?>
-
+</div>
+</div>
 </div>
 <div id="animekoukoku">
 <?php

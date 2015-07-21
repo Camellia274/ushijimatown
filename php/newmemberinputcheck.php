@@ -42,7 +42,7 @@ elseif ($_POST['telno'] == null){
 switch ($flag){
 	//入力されていない項目がある場合
 	case false:
-		$GLOBALS['message'] = "すべての項目を入力してください";
+		$GLOBALS['message'] = "<font color=\"#da0b00\">※すべての項目を入力してください</font>";
 		$_SESSION['newmembermessage'] = $GLOBALS['message'];
 
 		//新規登録画面へ戻る

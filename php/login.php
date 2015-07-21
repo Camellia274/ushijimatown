@@ -65,17 +65,17 @@
 	//メールアドレスとパスワードが入力されていない場合
 	elseif ($_POST['useremail'] == null && $_POST['userpassword'] == null){
 		//グローバル変数にエラーメッセージを格納する
-		$GLOBALS['errormessage'] = "メールアドレスとパスワードが入力されていません。";
+		$GLOBALS['errormessage'] = "<font color=\"#da0b00\">※メールアドレスとパスワードが入力されていません。</font>";
 	}
 	//メールアドレスが入力されていない場合
 	elseif ($_POST['useremail'] == null){
 		//グローバル変数にエラーメッセージを格納する
-		$GLOBALS['errormessage'] = "メールアドレスが入力されていません。";
+		$GLOBALS['errormessage'] = "<font color=\"#da0b00\">※メールアドレスが入力されていません。</font>";
 	}
 	//パスワードが入力されていない場合
 	elseif ($_POST['userpassword'] == null){
 		//グローバル変数にエラーメッセージを格納する
-		$GLOBALS['errormessage'] = "パスワードが入力されていません。";
+		$GLOBALS['errormessage'] = "<font color=\"#da0b00\">※パスワードが入力されていません。</font>";
 	}
 
 	//セッションにエラーメッセージを格納する
