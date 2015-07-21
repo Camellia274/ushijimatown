@@ -211,7 +211,7 @@ $(function(){
 		print "<form action=\"./cartdelete.php\" method=\"post\"><br>
 				<input type=\"submit\" value=\"カート内の商品をすべて削除する\">
 				</form>";
-		print "<form action=\"\" method=\"post\">
+		print "<form action=\"./buylogin.php\" method=\"post\">
 				<input type=\"submit\" value=\"レジに進む\">
 				</form>";
 	}
