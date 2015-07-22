@@ -199,7 +199,67 @@ $(function(){
 </tr>
 </table>
 </div>
+
 <div id="mannaka">
+住所→配送方法→支払方法→確認→完了
+<?php
+	//グローバル変数
+	$memberid = null;
+
+	//カートの商品を表示する
+	if (isset($_SESSION['userid']) && isset($_SESSION['username']) && isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])) {
+		$memberid = $_SESSION['userid'];
+
+		// mysqliクラスのオブジェクトを作成
+		$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
+		if ($mysqli->connect_error) {
+			echo $mysqli->connect_error;
+			exit();
+		}
+		else {
+			$mysqli->set_charset("utf8");
+		}
+
+		// ここにDB処理いろいろ書く
+		$sql = "SELECT "
+			 + "FROM member "
+			 + "WHERE member_id = ?";
+		if ($stmt = $mysqli->prepare($sql)) {
+			// 条件値をSQLにバインドする
+			$stmt->bind_param("i", $GLOBALS['memberid']);
+
+			// 実行
+			$stmt->execute();
+
+			// 取得結果を変数にバインドする
+			$stmt->bind_result($name, $explanation, $price, $size, $stock_quantity, $anime, $image_path);
+			while ($stmt->fetch()) {
+				$a = $price . "円";
+				$b = $stock_quantity . "個";
+
+			print "<div id=\"animezentai\"><br><br><div id=\"animegazou\"><img src=\"$image_path\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div>
+					<div id=\"animebun\">
+					<br><br>
+					<table>
+				  	<tr><td>アニメタイトル</td><td>$anime</td></tr>
+       			  	<tr><td>商品名</td><td>$name</td></tr>
+       				<tr><td>価格</td><td>$a</td></tr>
+       			 	<tr><td>商品説明</td><td>$explanation</td></tr>
+       				<tr><td>商品サイズ</td><td>$size</td></tr>
+   	    		   	<tr><td>在庫数</td><td>$b</td></tr>
+   	    		   	<tr><td>購入数</td><td>$GLOBALS[buyquantityview]</td></tr>
+				   	</table></div>
+			 	  	</div>";
+			}
+			$stmt->close();
+		}
+		// DB接続を閉じる
+		$mysqli->close();
+	}
+?>
+
+
+
 
 </div>
 <div id="animekoukoku">

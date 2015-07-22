@@ -185,6 +185,7 @@ margin-left:20px;
 /*******↑商品表示↑****************/
 /************↓スクロール固定↓***********/
 #kotei{
+	margin-left:100px;
 	width:770px;
 	height:100px;
 	clear:both;
@@ -192,8 +193,18 @@ margin-left:20px;
 }
 /************↑スクロール固定↑***********/
 /************↓スクロール↓**********/
-.animebox {
+.animebox01 {
+margin-left:100px;
+width:770px; /* 横幅 */
+height:600px; /* 縦幅 */
+overflow:auto;
+background-color:#FFF; /* 背景色 */
+border:1px  solid #c0c0c0 dashed; /* 枠 */
+color:#000000; /* 文字色 */
 
+}
+.animebox {
+margin-left:100px;
 width:770px; /* 横幅 */
 height:500px; /* 縦幅 */
 overflow:auto;
@@ -205,9 +216,7 @@ clear:both;
 .animebox p {
 margin:1em 10px; /* 行間 */
 }
-#animelist{
-margin-left:100px;
-}
+
 /************↑スクロール↑**********/
 /************↓お問い合わせ↓***********/
 #formmail { width: 870px; }
@@ -275,7 +284,7 @@ height: 600px;
 border:1px  solid #c0c0c0;
 float:left;
 width: 190px;
-height: 410px;
+height: 600px;
 margin:5px;
 }
 /***********↑固定↑**************/
