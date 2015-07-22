@@ -221,9 +221,9 @@ $(function(){
 		}
 
 		// ここにDB処理いろいろ書く
-		$sql = "SELECT "
-			 + "FROM member "
-			 + "WHERE member_id = ?";
+		$sql = "SELECT name, address, postal_code, email_address, phone_number "
+			 . "FROM member "
+			 . "WHERE member_id = ?";
 		if ($stmt = $mysqli->prepare($sql)) {
 			// 条件値をSQLにバインドする
 			$stmt->bind_param("i", $GLOBALS['memberid']);
@@ -232,24 +232,19 @@ $(function(){
 			$stmt->execute();
 
 			// 取得結果を変数にバインドする
-			$stmt->bind_result($name, $explanation, $price, $size, $stock_quantity, $anime, $image_path);
+			$stmt->bind_result($name, $address, $postal_code, $email_address, $phone_number);
 			while ($stmt->fetch()) {
-				$a = $price . "円";
-				$b = $stock_quantity . "個";
-
-			print "<div id=\"animezentai\"><br><br><div id=\"animegazou\"><img src=\"$image_path\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div>
-					<div id=\"animebun\">
-					<br><br>
-					<table>
-				  	<tr><td>アニメタイトル</td><td>$anime</td></tr>
-       			  	<tr><td>商品名</td><td>$name</td></tr>
-       				<tr><td>価格</td><td>$a</td></tr>
-       			 	<tr><td>商品説明</td><td>$explanation</td></tr>
-       				<tr><td>商品サイズ</td><td>$size</td></tr>
-   	    		   	<tr><td>在庫数</td><td>$b</td></tr>
-   	    		   	<tr><td>購入数</td><td>$GLOBALS[buyquantityview]</td></tr>
-				   	</table></div>
-			 	  	</div>";
+				print "<form action=\"\" method=\"post\">
+	            		<table>
+					  	<tr><td colspan=\"2\" align=\"center\">配送先の確認</td></tr>
+       				  	<tr><td>氏名</td><td>$name</td></tr>
+       					<tr><td>郵便番号</td><td>$postal_code</td></tr>
+       				 	<tr><td>住所</td><td>$address</td></tr>
+       					<tr><td>メールアドレス</td><td>$email_address</td></tr>
+   	    			   	<tr><td>電話番号</td><td>$phone_number</td></tr>
+   	    			   	<tr><td colspan=\"2\" align=\"center\"><input type=\"submit\" value=\"次へ\"></td></tr>
+				 	  	</table>
+						</form>";
 			}
 			$stmt->close();
 		}
@@ -257,10 +252,6 @@ $(function(){
 		$mysqli->close();
 	}
 ?>
-
-
-
-
 </div>
 <div id="animekoukoku">
 <?php
