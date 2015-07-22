@@ -199,27 +199,8 @@ $(function(){
 </tr>
 </table>
 </div>
-
 <div id="mannaka">
-<form action="./buylogincheck.php" method="post">
-	<table>
-	<tr>
-	<td colspan="2" align="center">会員登録済みの方</td>
-	</tr>
-	<tr>
-	<td>メールアドレス</td><td><input type="text" name="useremail" style="width: 170px"></td>
-	</tr>
-	<tr>
-	<td>パスワード</td><td><input type="password" name="userpassword" style="width: 170px"></td>
-	</tr>
-	<tr>
-	<td colspan="2" align="center"><input type="submit" value="ログイン"></td>
-	</tr>
-	</table>
-</form>
-<br>
-<p><a href="../html/newmember.html">新規登録される方はこちら</a></p><br>
-<p><a href="./buynonmemberstep1.php">会員登録なしで購入される方はこちら</a></p>
+
 </div>
 <div id="animekoukoku">
 <?php
