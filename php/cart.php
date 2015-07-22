@@ -137,6 +137,7 @@ $(function(){
     }
 
 });
+
 </script>
 
 </head>
@@ -200,7 +201,7 @@ $(function(){
 </table>
 </div>
 <div id="mannaka">
-<div class="animebox">
+
 <div id="animelist">
 <?php
 	if (!isset($_SESSION['cartgoodsid']) && !isset($_SESSION['cartquantity'])) {
@@ -208,12 +209,12 @@ $(function(){
 	}
 
 	elseif(isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])){
-		print "<form action=\"./cartdelete.php\" method=\"post\"><br>
+		print "<div id=\"kotei\"><form action=\"./cartdelete.php\" method=\"post\"><br>
 				<input type=\"submit\" value=\"カート内の商品をすべて削除する\">
 				</form>";
 		print "<form action=\"./buylogin.php\" method=\"post\">
 				<input type=\"submit\" value=\"レジに進む\">
-				</form>";
+				</form></div><div class=\"animebox\">";
 	}
 
 	//グローバル変数

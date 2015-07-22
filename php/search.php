@@ -200,7 +200,7 @@ $(function(){
 </table>
 </div>
 <div id="mannaka">
-<div class="animebox">
+<div class="animebox01">
 <div id="animelist">
 
 <?php
