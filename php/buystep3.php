@@ -208,7 +208,7 @@ $(function(){
 <tr><td colspan="2" align="center">支払方法</td></tr>
 <tr><td colspan="2" align="center"><input type="radio" value="代金引換">代金引換</td></tr>
 <tr>
-<td align="center"><input type="button" value="戻る" onClick="history.go(-1)"></td>
+<!--<td align="center"><input type="button" value="戻る" onClick="history.go(-1)"></td>-->
 <td align="center"><input type="submit" value="次へ"></td>
 </tr>
 </table>
