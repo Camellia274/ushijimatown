@@ -201,12 +201,12 @@ $(function(){
 </div>
 
 <div id="mannaka">
-配送先住所→配送方法→支払方法→購入確認→購入完了<br><br>
+配送先住所→<font color="#ff0000">配送方法</font>→支払方法→購入確認→購入完了<br><br>
 
 <form action="./buystep3.php" method="post">
 <table>
 <tr><td align="center" colspan="2">配送方法</td></tr>
-<tr><td align="center" colspan="2"><input type="radio" value="通常配送" name="deliverymethod">通常配送</td></tr>
+<tr><td align="center" colspan="2"><input type="radio" value="通常配送" name="deliverymethod" checked="checked">通常配送</td></tr>
 <tr><td align="center" colspan="2">配送時間</td></tr>
 <tr><td align="center" colspan="2">
 <select name="deliverytime">

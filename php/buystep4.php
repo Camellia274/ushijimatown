@@ -201,14 +201,23 @@ $(function(){
 </div>
 
 <div id="mannaka">
-<font color="#ff0000">配送先住所</font>→配送方法→支払方法→購入確認→購入完了<br><br>
 <?php
-	//グローバル変数
-	$memberid = null;
+$_SESSION['cartpaymentmethod'] = $_POST['paymentmethod'];
+?>
 
-	//会員情報を表示する
+<?php
+//グローバル変数
+$memberid = null;
+$name = null;
+$address = null;
+$postal_code = null;
+$email_address = null;
+$phone_number = null;
+
+//会員情報を表示する
+function memberinfo(){
 	if (isset($_SESSION['userid']) && isset($_SESSION['username']) && isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])) {
-		$memberid = $_SESSION['userid'];
+		$GLOBALS['memberid'] = $_SESSION['userid'];
 
 		// mysqliクラスのオブジェクトを作成
 		$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
@@ -222,8 +231,8 @@ $(function(){
 
 		// ここにDB処理いろいろ書く
 		$sql = "SELECT name, address, postal_code, email_address, phone_number "
-			 . "FROM member "
-			 . "WHERE member_id = ?";
+				. "FROM member "
+				. "WHERE member_id = ?";
 		if ($stmt = $mysqli->prepare($sql)) {
 			// 条件値をSQLにバインドする
 			$stmt->bind_param("i", $GLOBALS['memberid']);
@@ -234,25 +243,41 @@ $(function(){
 			// 取得結果を変数にバインドする
 			$stmt->bind_result($name, $address, $postal_code, $email_address, $phone_number);
 			while ($stmt->fetch()) {
-				print "<form action=\"./buystep2.php\" method=\"post\">
-	            		<table>
-					  	<tr><td colspan=\"2\" align=\"center\">配送先の確認</td></tr>
-       				  	<tr><td>氏名</td><td>$name</td></tr>
-       					<tr><td>郵便番号</td><td>$postal_code</td></tr>
-       				 	<tr><td>住所</td><td>$address</td></tr>
-       					<tr><td>メールアドレス</td><td>$email_address</td></tr>
-   	    			   	<tr><td>電話番号</td><td>$phone_number</td></tr>
-   	    			   	<tr><td colspan=\"2\" align=\"center\"><input type=\"submit\" value=\"次へ\"></td></tr>
-				 	  	</table>
-						</form>";
+				$GLOBALS['name'] = $name;
+				$GLOBALS['address'] = $address;
+				$GLOBALS['postal_code'] = $postal_code;
+				$GLOBALS['email_address'] = $email_address;
+				$GLOBALS['phone_number'] = $phone_number;
 			}
 			$stmt->close();
 		}
-		// DB接続を閉じる
-		$mysqli->close();
+	// DB接続を閉じる
+	$mysqli->close();
 	}
+}
 ?>
+配送先住所→配送方法→支払方法→<font color="#ff0000">購入確認</font>→購入完了<br><br>
+
+<?php
+memberinfo();
+?>
+
+<form action="" method="post">
+<table>
+<tr><td>購入情報の確認</td></tr>
+<tr><td>氏名</td><td><?php print $name; ?></td></tr>
+<tr><td>郵便番号</td><td><?php print $postal_code; ?></td></tr>
+<tr><td>住所</td><td><?php print $address; ?></td></tr>
+<tr><td>メールアドレス</td><td><?php print $email_address; ?></td></tr>
+<tr><td>電話番号</td><td><?php print $phone_number; ?></td></tr>
+<tr><td>配送方法</td><td><?php print $_SESSION['cartdeliverymethod']; ?></td></tr>
+<tr><td>配送時間</td><td><?php print $_SESSION['cartdeliverytime']; ?></td></tr>
+<tr><td>支払方法</td><td><?php print $_SESSION['cartpaymentmethod']; ?></td></tr>
+<tr><td><input type="submit" value="購入確定"></td></tr>
+</table>
+</form>
 </div>
+
 <div id="animekoukoku">
 <?php
 //セッションのユーザ名とユーザIDが存在しなかった場合

@@ -201,12 +201,17 @@ $(function(){
 </div>
 
 <div id="mannaka">
-配送先住所→配送方法→支払方法→購入確認→購入完了<br><br>
+<?php
+$_SESSION['cartdeliverymethod'] = $_POST['deliverymethod'];
+$_SESSION['cartdeliverytime'] = $_POST['deliverytime'];
+?>
+
+配送先住所→配送方法→<font color="#ff0000">支払方法</font>→購入確認→購入完了<br><br>
 
 <form action="./buystep4.php" method="post">
 <table>
 <tr><td colspan="2" align="center">支払方法</td></tr>
-<tr><td colspan="2" align="center"><input type="radio" value="代金引換">代金引換</td></tr>
+<tr><td colspan="2" align="center"><input type="radio" value="代金引換" checked="checked" name="paymentmethod">代金引換</td></tr>
 <tr>
 <!--<td align="center"><input type="button" value="戻る" onClick="history.go(-1)"></td>-->
 <td align="center"><input type="submit" value="次へ"></td>
