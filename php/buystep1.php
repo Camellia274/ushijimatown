@@ -201,7 +201,7 @@ $(function(){
 </div>
 
 <div id="mannaka">
-住所→配送方法→支払方法→確認→完了
+配送先住所→配送方法→支払方法→確認→完了
 <?php
 	//グローバル変数
 	$memberid = null;
