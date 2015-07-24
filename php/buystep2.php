@@ -202,56 +202,24 @@ $(function(){
 
 <div id="mannaka">
 配送先住所→配送方法→支払方法→購入確認→購入完了<br><br>
-<?php
-	//グローバル変数
-	$memberid = null;
 
-	//カートの商品を表示する
-	if (isset($_SESSION['userid']) && isset($_SESSION['username']) && isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])) {
-		$memberid = $_SESSION['userid'];
-
-		// mysqliクラスのオブジェクトを作成
-		$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
-		if ($mysqli->connect_error) {
-			echo $mysqli->connect_error;
-			exit();
-		}
-		else {
-			$mysqli->set_charset("utf8");
-		}
-
-		// ここにDB処理いろいろ書く
-		$sql = "SELECT name, address, postal_code, email_address, phone_number "
-			 . "FROM member "
-			 . "WHERE member_id = ?";
-		if ($stmt = $mysqli->prepare($sql)) {
-			// 条件値をSQLにバインドする
-			$stmt->bind_param("i", $GLOBALS['memberid']);
-
-			// 実行
-			$stmt->execute();
-
-			// 取得結果を変数にバインドする
-			$stmt->bind_result($name, $address, $postal_code, $email_address, $phone_number);
-			while ($stmt->fetch()) {
-				print "<form action=\"./buystep2.php\" method=\"post\">
-	            		<table>
-					  	<tr><td colspan=\"2\" align=\"center\">配送先の確認</td></tr>
-       				  	<tr><td>氏名</td><td>$name</td></tr>
-       					<tr><td>郵便番号</td><td>$postal_code</td></tr>
-       				 	<tr><td>住所</td><td>$address</td></tr>
-       					<tr><td>メールアドレス</td><td>$email_address</td></tr>
-   	    			   	<tr><td>電話番号</td><td>$phone_number</td></tr>
-   	    			   	<tr><td colspan=\"2\" align=\"center\"><input type=\"submit\" value=\"次へ\"></td></tr>
-				 	  	</table>
-						</form>";
-			}
-			$stmt->close();
-		}
-		// DB接続を閉じる
-		$mysqli->close();
-	}
-?>
+<form action="./buystep3.php" method="post">
+<table>
+<tr><td align="center" colspan="2">配送方法</td></tr>
+<tr><td align="center" colspan="2"><input type="radio" value="通常配送" name="deliverymethod">通常配送</td></tr>
+<tr><td align="center" colspan="2">配送時間</td></tr>
+<tr><td align="center" colspan="2">
+<select name="deliverytime">
+<option value="9時～12時">9時～12時
+<option value="13時～15時">13時～15時
+</select>
+</td></tr>
+<tr>
+<td align="center"><input type="button" value="戻る" onClick="history.go(-1)"></td>
+<td align="center"><input type="submit" value="次へ"></td>
+</tr>
+</table>
+</form>
 </div>
 <div id="animekoukoku">
 <?php
