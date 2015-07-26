@@ -204,81 +204,105 @@ $(function(){
 
 <div id="animelist">
 <?php
+	//グローバル変数
+	$goodsid = null;			//商品ID_セッション受け取り用
+	$gid = null;				//商品ID_DBfor用
+	$buyquantity = null;		//商品購入数量_セッション受け取り用
+	$goodsname = array();		//商品名
+	$explanation = array();		//商品説明
+	$price = array();			//商品金額
+	$size = array();			//商品サイズ
+	$stock_quantity = array();	//商品在庫数量
+	$anime = array();			//商品アニメタイトル
+	$image_path = array();		//商品画像パス
+	$totalprice = 0;			//商品合計金額
+
+	//カートの商品情報を配列に入れる関数
+	function cartview(){
+		if (isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])) {
+			$GLOBALS['goodsid'] = $_SESSION['cartgoodsid'];
+			$GLOBALS['buyquantity'] = $_SESSION['cartquantity'];
+
+			for ($i = 0; $i < count($GLOBALS['goodsid']); $i++){
+				$GLOBALS['gid'] = $GLOBALS['goodsid'][$i];
+
+				// mysqliクラスのオブジェクトを作成
+				$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
+				if ($mysqli->connect_error) {
+					echo $mysqli->connect_error;
+					exit();
+				}
+				else {
+					$mysqli->set_charset("utf8");
+				}
+
+				// ここにDB処理いろいろ書く
+				$sql = "SELECT g.goods_name, g.goods_explanation, g.price, g.size, g.stock_quantity, a.anime_title, g.image_url
+						FROM goods g JOIN anime a
+						ON(g.anime_id = a.anime_id)
+						WHERE goods_id = ?";
+				if ($stmt = $mysqli->prepare($sql)) {
+					// 条件値をSQLにバインドする
+					$stmt->bind_param("i", $GLOBALS['gid']);
+
+					// 実行
+					$stmt->execute();
+
+					// 取得結果を変数にバインドする
+					$stmt->bind_result($name, $explanation, $price, $size, $stock_quantity, $anime, $image_path);
+					while ($stmt->fetch()) {
+						array_push($GLOBALS['goodsname'], $name);
+						array_push($GLOBALS['explanation'], $explanation);
+						array_push($GLOBALS['price'], $price."円");
+						array_push($GLOBALS['size'], $size);
+						array_push($GLOBALS['stock_quantity'], $stock_quantity."個");
+						array_push($GLOBALS['anime'], $anime);
+						array_push($GLOBALS['image_path'], $image_path);
+
+						$GLOBALS['totalprice'] += ($GLOBALS['buyquantity'][$i] * $price);
+					}
+					$stmt->close();
+				}
+				// DB接続を閉じる
+				$mysqli->close();
+			}
+		}
+	}
+
+	//セッションに商品IDと商品数量が存在しない場合
 	if (!isset($_SESSION['cartgoodsid']) && !isset($_SESSION['cartquantity'])) {
 		print "<br><br><br><div style=\"margin-left:250px\">カート内に商品が存在しません</div>";
 	}
 
+	//セッションに商品IDと商品数量が存在した場合
 	elseif(isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])){
-		print "<div id=\"kotei\"><form action=\"./cartdelete.php\" method=\"post\"><br>
+		cartview();
+		print "<div id=\"kotei\">";
+		print "<form action=\"./cartdelete.php\" method=\"post\"><br>
 				<input type=\"submit\" value=\"カート内の商品をすべて削除する\">
 				</form>";
 		print "<form action=\"./buylogin.php\" method=\"post\">
 				<input type=\"submit\" value=\"レジに進む\">
-				</form></div><div class=\"animebox\">";
-	}
+				</form>";
+		print "合計".$GLOBALS['totalprice']."円";
+		print "</div><div class=\"animebox\">";
 
-	//グローバル変数
-	$goodsid = null;
-	$buyquantity = null;
-	$price = null;
-	$gid = null;
-	$buyquantityview = null;
-
-	//カートの商品を表示する
-	if (isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])) {
-		$GLOBALS['goodsid'] = $_SESSION['cartgoodsid'];
-		$GLOBALS['buyquantity'] = $_SESSION['cartquantity'];
-
-		for ($i = 0; $i < count($goodsid); $i++){
-			$GLOBALS['gid'] = $goodsid[$i];
-			$GLOBALS['buyquantityview'] = $buyquantity[$i] . "個";
-
-			// mysqliクラスのオブジェクトを作成
-			$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
-			if ($mysqli->connect_error) {
-				echo $mysqli->connect_error;
-				exit();
-			}
-			else {
-				$mysqli->set_charset("utf8");
-			}
-
-			// ここにDB処理いろいろ書く
-			$sql = "SELECT g.goods_name, g.goods_explanation, g.price, g.size, g.stock_quantity, a.anime_title, g.image_url
-					FROM goods g JOIN anime a
-					ON(g.anime_id = a.anime_id)
-					WHERE goods_id = ?";
-			if ($stmt = $mysqli->prepare($sql)) {
-				// 条件値をSQLにバインドする
-				$stmt->bind_param("i", $GLOBALS['gid']);
-
-				// 実行
-				$stmt->execute();
-
-				// 取得結果を変数にバインドする
-				$stmt->bind_result($name, $explanation, $price, $size, $stock_quantity, $anime, $image_path);
-				while ($stmt->fetch()) {
-					$a = $price . "円";
-					$b = $stock_quantity . "個";
-
-				print "<div id=\"animezentai\"><br><br><div id=\"animegazou\"><img src=\"$image_path\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div>
-						<div id=\"animebun\">
-				   		<br><br>
-				   		<table>
-				   		<tr><td>アニメタイトル</td><td>$anime</td></tr>
-       			   		<tr><td>商品名</td><td>$name</td></tr>
-       			   		<tr><td>価格</td><td>$a</td></tr>
-       			   		<tr><td>商品説明</td><td>$explanation</td></tr>
-       			   		<tr><td>商品サイズ</td><td>$size</td></tr>
-   	    		   		<tr><td>在庫数</td><td>$b</td></tr>
-   	    		   		<tr><td>購入数</td><td>$GLOBALS[buyquantityview]</td></tr>
-				   		</table></div>
-			 	  		</div>";
-				}
-				$stmt->close();
-			}
-			// DB接続を閉じる
-			$mysqli->close();
+		for ($i = 0; $i < count($GLOBALS['goodsname']); $i++) {
+			print "<div id=\"animezentai\"><br><br>"
+				. "<div id=\"animegazou\"><img src=\"$image_path[$i]\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div>"
+				. "<div id=\"animebun\">"
+				. "<br><br>"
+				. "<table>"
+				. "<tr><td>アニメタイトル</td><td>$anime[$i]</td></tr>"
+				. "<tr><td>商品名</td><td>$goodsname[$i]</td></tr>"
+				. "<tr><td>価格</td><td>$price[$i]</td></tr>"
+				. "<tr><td>商品説明</td><td>$explanation[$i]</td></tr>"
+				. "<tr><td>商品サイズ</td><td>$size[$i]</td></tr>"
+				. "<tr><td>在庫数</td><td>$stock_quantity[$i]</td></tr>"
+				. "<tr><td>購入数</td><td>$buyquantity[$i]個</td></tr>"
+				. "</table>"
+				. "</div>"
+				. "</div>";
 		}
 	}
 ?>
