@@ -6,12 +6,12 @@
 session_start();
 ?>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/reset.css" type="text/css" />
-<link rel="stylesheet" href="../css/css.css" type="text/css" />
+<link rel="stylesheet" href="/ushijimatown/css/reset.css" type="text/css" />
+<link rel="stylesheet" href="/ushijimatown/css/css.css" type="text/css" />
 <title>フィギュア専門店うしぢまタウン</title>
-<script type="text/javascript" src="../plugin/jquery.js"></script>
-<script type="text/javascript" src="../plugin/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="../plugin/sliders.js"></script>
+<script type="text/javascript" src="/ushijimatown/plugin/jquery.js"></script>
+<script type="text/javascript" src="/ushijimatown/plugin/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/ushijimatown/plugin/sliders.js"></script>
 <script type="text/javascript">
 jQuery(function($) {
 	$.fn.extend({
@@ -148,7 +148,7 @@ $(function(){
 <div id="header">
 <!--タイトルロゴここから-->
 <div class="header" id="header_left">
-<a href="../html/index.html"><img src="../image/rogo.png" alt="rogo" width="350" height="200">
+<a href="/ushijimatown/html/index.html"><img src="../image/rogo.png" alt="rogo" width="350" height="200">
 </a></div>
 <!--タイトルロゴここまで-->
 </div>
@@ -165,13 +165,13 @@ $(function(){
 </div>
 </div>
 <div id="kensakuform">
-<form name="searchform4" id="searchform4" method="POST" action="#" >
-<input name="keywords4" id="keywords4" value="" type="text" />
+<form name="searchform" id="searchform4" method="GET" action="/ushijimatown/php/search.php" >
+<input name="keywords" id="keywords4" type="text" />
 <input type="image" src="../image/btn4.gif" alt="検索" name="searchBtn4" id="searchBtn4" />
 </form>
 </div>
 <div class="sab" id="sab" >
-<a href="../html/cart.html"><img src="../image/cart.png"  width="120" height="35"></a>
+<a href="/ushijimatown/php/cart.php"><img src="../image/cart.png"  width="120" height="35"></a>
 <a href="../html/goodshistory.html"><img src="../image/rireki.png"  width="120" height="35"></a>
 </div>
 
@@ -181,74 +181,60 @@ $(function(){
 
 <div id="anime">
 <div id="animetitle">
+<div id="animeitiran"><center><a href="animelist.html">アニメ一覧</a></center></div>
+
+
 <table width="200" style="margin-left:10px;" >
 <tr valign="middle">
-<td colspan="3" height="20">アニメ一覧</td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=ジョジョの奇妙な冒険">ジョジョの奇妙な冒険</a></td>
 </tr>
 <tr valign="middle">
-<td align="left" height="20"><a href="#">ジョジョの奇妙な冒険</a></td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=ドラゴンボール">ドラゴンボール</a></td>
 </tr>
 <tr valign="middle">
-<td align="left" height="20"><a href="#">ドラゴンボール</a></td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=BLACK LAGOON">BLACK LAGOON</a></td>
 </tr>
 <tr valign="middle">
-<td align="left" height="20"><a href="#">BLACK LAGOON</a></td>
-</tr>
-<tr valign="middle">
-<td align="left" height="20"><a href="#">魔法少女まどか☆マギカ</a></td>
+<td align="left" height="20"><a href="/ushijimatown/php/search.php?keywords=魔法少女まどか☆マギカ">魔法少女まどか☆マギカ</a></td>
 </tr>
 </table>
 </div>
+<div id="mannaka" align="center">
+配送先住所→<font color="#ff0000">配送方法</font>→支払方法→購入確認→購入完了<br><br>
 
-<div id="mannaka">
-<div id="animeosusume">
-<div align="center">
-<table>
-<p class="f1">
-ログイン➨商品情報➨<font color="#FF0000">支払い・配送方法</font>➨完了
-</p>
-<ul>
-<li><a href="#"><img src="../image/img01.gif" width="250" height="200" alt=""></a></li>
-</ul>
-魔法少女まどか☆マギカ　鹿目まどか　￥5000<br>
-(商品情報を表示する)<br>
 
-お客様情報を表示する
-<tr>
-<td align="left"><font color="#FF0000">以上でお間違えないか必ずお確かめください。</font></td><td align="left"></td>
-</tr>
-<td colspan="2" style="text-align: center;"><input type="submit" value="注文を確定する"></td>
-</tr>
-</table>
-</div>
-</div>
-</div>
 
+
+
+</div>
 <div id="animekoukoku">
 <?php
 //セッションのユーザ名とユーザIDが存在しなかった場合
 if (!isset($_SESSION['username']) && !isset($_SESSION['userid'])){
 	print "<center>
-			<form action=\"../php/login.php\" method=\"post\">
+			<form action=\"/ushijimatown/php/login.php\" method=\"post\">
 			<br><table class=\"loginform\">
 			<tr><td>メールアドレス：</td></tr>
-			<tr><td><input type=\"text\" name=\"useremail\" size=\"23\"></td></tr>
+			<tr><td><input type=\"text\" name=\"useremail\" style=\"width: 170px\"></td></tr>
 			<tr><td>パスワード：</td></tr>
-			<tr><td><input type=\"password\" name=\"userpassword\" size=\"23\"></td></tr>
+			<tr><td><input type=\"password\" name=\"userpassword\" style=\"width: 170px\"></td></tr>
 			</table><br>
 			<input type=\"submit\" class=\"classname\" value=\"ログイン\">
 			</form><br>
-			<a href=\"newmember.html\" class=\"classname\">新規登録</a>
+			<a href=\"/ushijimatown/html/newmember.html\" class=\"classname\">新規登録</a>
 			</center>";
 }
 //セッションのユーザ名とユーザIDが存在した場合
 elseif (isset($_SESSION['username']) && isset($_SESSION['userid'])){
-	print "<center>ようこそ";
+	print "<br><center>ようこそ";
 	print $_SESSION['username'];
-	print "さん";
-	print "<form action=\"../php/logout.php\" method=\"post\">
+	print "さん<br><br>";
+	print $_SESSION['point'];
+	print "pt<br>";
+	print "<br><form action=\"/ushijimatown/php/logout.php\" method=\"post\">
 			<input type=\"submit\" class=\"classname\" value=\"ログアウト\">
-			</form></center>";
+			</form><br>";
+	print "<a href=\"/ushijimatown/html/menberinfochange.html\" class=\"classname\">会員設定</a></center><br><br><br>";
 }
 //エラーメッセージが存在した場合
 if (isset($_SESSION['errormessage'])){
@@ -258,13 +244,17 @@ if (isset($_SESSION['errormessage'])){
 }
 ?>
 <br>
+<div id="monsto">
 <ul randomdisplay="3" class="sample-list">
-<li><img src="../image/izanagi001.jpg" width="190" height="60" /></li>
-<li><img src="../image/images.jpg" width="190" height="60" /></li>
-<li><img src="../image/imagesragieri.jpg" width="190" height="60" /></li>
-<li><img src="../image/201501291305027188.jpeg" width="190" height="60" /></li>
-<li><img src="../image/20141118_1a.png" width="190" height="60" /></li>
-
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/izanagi001.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/images.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/imagesragieri.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/201501291305027188.jpeg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/20141118_1a.png" width="190" height="60" /></a></li>
+<li><a href="/ushijimatown/php/search.php?keywords=ジョジョの奇妙な冒険"><img src="/ushijimatown/image/jojo01.png" width="190" height="60" /></a></li>
+<li><a href="/ushijimatown/php/search.php?keywords=魔法少女まどか☆マギカ"><img src="/ushijimatown/image/madomagi03.jpg" width="190" height="60" /></a></li>
+<li><a href="/ushijimatown/php/search.php?keywords=BLACK LAGOON"><img src="/ushijimatown/image/blacklagoon01.jpg" width="190" height="60" /></a></li>
+<li><a href="/ushijimatown/php/search.php?keywords=ドラゴンボール"><img src="/ushijimatown/image/doragonball01.gif" width="190" height="60" /></a></li>
 </ul>
 </div>
 </div>

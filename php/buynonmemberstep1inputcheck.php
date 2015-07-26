@@ -6,20 +6,8 @@ session_start();
 $message = null;
 $flag = true;
 
-//メールアドレスが入力されていなかった場合
-if ($_POST['useremail'] == null){
-	$GLOBALS['flag'] = false;
-}
-//パスワードが入力されていなかった場合
-elseif ($_POST['userpassword'] == null){
-	$GLOBALS['flag'] = false;
-}
-//確認用パスワードが入力されていなかった場合
-elseif ($_POST['userpasswordcheck'] == null){
-	$GLOBALS['flag'] = false;
-}
 //氏名が入力されていなかった場合
-elseif ($_POST['name'] == null){
+if ($_POST['name'] == null){
 	$GLOBALS['flag'] = false;
 }
 //フリガナが入力されていなかった場合
@@ -43,27 +31,24 @@ switch ($flag){
 	//入力されていない項目がある場合
 	case false:
 		$GLOBALS['message'] = "<font color=\"#FF0000\">※すべての項目を入力してください</font>";
-		$_SESSION['newmembermessage'] = $GLOBALS['message'];
+		$_SESSION['inputcheckmessage'] = $GLOBALS['message'];
 
-		//新規登録画面へ戻る
-		header('location: ../html/newmember.html');
+		//配送先情報入力画面へ戻る
+		header('location: ./buynonmemberstep1.php');
 		exit();
 		break;
 
 	//すべての項目が入力されている場合
 	case true:
 		//セッションに入力値を入れる
-		$_SESSION['useremail'] = $_POST['useremail'];
-		$_SESSION['userpassword'] = $_POST['userpassword'];
-		$_SESSION['userpasswordcheck'] = $_POST['userpasswordcheck'];
 		$_SESSION['name'] = $_POST['name'];
 		$_SESSION['kana'] = $_POST['kana'];
 		$_SESSION['postno'] = $_POST['postno'];
 		$_SESSION['address'] = $_POST['address'];
 		$_SESSION['telno'] = $_POST['telno'];
 
-		//パスワードと確認用パスワード一致確認へ進む
-		header('location: newmemberpasswordcheck.php');
+		//配送方法画面へ進む
+		header('location: ./buynonmemberstep2.php');
 		exit();
 		break;
 }

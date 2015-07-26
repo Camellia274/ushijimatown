@@ -199,7 +199,49 @@ $(function(){
 </tr>
 </table>
 </div>
-<div id="mannaka">
+<div id="mannaka" align="center">
+<font color="#ff0000">配送先住所</font>→配送方法→支払方法→購入確認→購入完了<br><br>
+
+<form action="./buynonmemberstep1inputcheck.php" method="post">
+新規登録
+<table>
+<tr>
+<td colspan="2">
+<?php
+if(isset($_SESSION['inputcheckmessage'])){
+	print $_SESSION['inputcheckmessage'];
+	//セッション"inputcheckmessage"を削除する
+	unset($_SESSION['inputcheckmessage']);
+}
+?>
+</td>
+</tr>
+<tr>
+<td align="left">氏名</td><td align="left"><input type="text" name="name" size="31" style="width: 200px"
+															placeholder="例)麻生花子"></td>
+</tr>
+<tr>
+<td align="left">フリガナ</td><td align="left"><input type="text" name="kana" style="width: 200px"
+													placeholder="例)アソウハナコ"></td>
+</tr>
+<tr>
+<td align="left">郵便番号</td><td align="left"><input type="text" name="postno" maxlength="8"
+													style="width: 200px" placeholder="例)812-8512"></td>
+</tr>
+<tr>
+<td align="left" style="vertical-align: middle;">住所</td><td align="left"><textarea name="address" rows="4" cols="25" style="width: 200px"
+									placeholder="例)福岡県福岡市博多区博多駅前２丁目９の３"></textarea></td>
+</tr>
+<tr>
+<td align="left">電話番号</td><td align="left"><input type="text" name="telno" style="width: 200px"
+													placeholder="例)092-441-2131"></td>
+</tr>
+</table>
+<br><br>
+<input type="submit" value="次へ">
+</form>
+
+
 
 </div>
 <div id="animekoukoku">

@@ -204,7 +204,6 @@ $(function(){
 <form action="../php/newmemberinputcheck.php" method="post">
 <br><center><span class="midasi" >新規登録</span></center><br>
 <table>
-<tr><td></td></tr>
 <tr>
 <td colspan="2"><?php if(isset($_SESSION['newmembermessage'])){
 						print $_SESSION['newmembermessage'];
@@ -237,7 +236,7 @@ $(function(){
 													style="width: 200px" placeholder="例)812-8512"></td>
 </tr>
 <tr>
-<td align="left">住所</td><td align="left"><textarea name="address" rows="4" cols="25" style="width: 200px"
+<td align="left" style="vertical-align: middle;">住所</td><td align="left"><textarea name="address" rows="4" cols="25" style="width: 200px"
 									placeholder="例)福岡県福岡市博多区博多駅前２丁目９の３"></textarea></td>
 </tr>
 <tr>

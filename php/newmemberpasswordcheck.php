@@ -8,7 +8,7 @@ $message = null;
 //パスワードと確認用パスワードが一致しなかった場合
 if ($_SESSION['userpassword'] != $_SESSION['userpasswordcheck']){
 	//グローバル変数にメッセージを格納
-	$GLOBALS['message'] = "パスワードと確認用パスワードが一致しません";
+	$GLOBALS['message'] = "<font color=\"#FF0000\">※パスワードと確認用パスワードが一致しません</font>";
 
 	//セッションにメッセージを格納
 	$_SESSION['newmembermessage'] = $GLOBALS['message'];

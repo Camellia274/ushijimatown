@@ -213,7 +213,9 @@ unset($_SESSION['cartpaymentmethod']);
 
 
 
-
+<form action="../html/index.html" method="post">
+<input type="submit" value="トップへ">
+</form>
 </div>
 <div id="animekoukoku">
 <?php
