@@ -200,7 +200,7 @@ $(function(){
 </tr>
 </table>
 </div>
-<div id="mannaka">
+<div id="mannaka" align="center">
 
 <div id="animelist">
 <?php
@@ -270,7 +270,7 @@ $(function(){
 
 	//セッションに商品IDと商品数量が存在しない場合
 	if (!isset($_SESSION['cartgoodsid']) && !isset($_SESSION['cartquantity'])) {
-		print "<br><br><br><div style=\"margin-left:250px\">カート内に商品が存在しません</div>";
+		print "<br><br><br>カート内に商品が存在しません";
 	}
 
 	//セッションに商品IDと商品数量が存在した場合

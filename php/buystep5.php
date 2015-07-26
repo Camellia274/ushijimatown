@@ -200,6 +200,14 @@ $(function(){
 </table>
 </div>
 <div id="mannaka" align="center">
+<?php
+unset($_SESSION['cartgoodsid']);
+unset($_SESSION['cartquantity']);
+unset($_SESSION['cartdeliverymethod']);
+unset($_SESSION['cartdeliverytime']);
+unset($_SESSION['cartpaymentmethod']);
+?>
+
 <br><br>
 <p>購入が完了しました</p>
 
