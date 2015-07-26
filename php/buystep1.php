@@ -200,14 +200,14 @@ $(function(){
 </table>
 </div>
 
-<div id="mannaka">
+<div id="mannaka" align="center">
 <font color="#ff0000">配送先住所</font>→配送方法→支払方法→購入確認→購入完了<br><br>
 <?php
 	//グローバル変数
 	$memberid = null;
 
 	//会員情報を表示する
-	if (isset($_SESSION['userid']) && isset($_SESSION['username']) && isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])) {
+	if (isset($_SESSION['userid']) && isset($_SESSION['username'])) {
 		$memberid = $_SESSION['userid'];
 
 		// mysqliクラスのオブジェクトを作成

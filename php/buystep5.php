@@ -137,7 +137,6 @@ $(function(){
     }
 
 });
-
 </script>
 
 </head>
@@ -172,7 +171,7 @@ $(function(){
 </form>
 </div>
 <div class="sab" id="sab" >
-<a href="/ushijimatown/php/cart.php"><img src="../image/cart.png"  width="120" height="35"></a>
+<a href="../php/cart.php"><img src="../image/cart.png"  width="120" height="35"></a>
 <a href="../html/goodshistory.html"><img src="../image/rireki.png"  width="120" height="35"></a>
 </div>
 
@@ -182,7 +181,7 @@ $(function(){
 
 <div id="anime">
 <div id="animetitle">
-<div id="animeitiran"><center><a href="animelist.html">アニメ一覧</a></center></div>
+<div id="animeitiran"><center><a href="../html/animelist.html">アニメ一覧</a></center></div>
 
 
 <table width="200" style="margin-left:10px;" >
@@ -200,113 +199,13 @@ $(function(){
 </tr>
 </table>
 </div>
-<div id="mannaka">
+<div id="mannaka" align="center">
+<br><br>
+<p>購入が完了しました</p>
 
-<div id="animelist">
-<?php
-	//グローバル変数
-	$goodsid = null;			//商品ID_セッション受け取り用
-	$gid = null;				//商品ID_DBfor用
-	$buyquantity = null;		//商品購入数量_セッション受け取り用
-	$goodsname = array();		//商品名
-	$explanation = array();		//商品説明
-	$price = array();			//商品金額
-	$size = array();			//商品サイズ
-	$stock_quantity = array();	//商品在庫数量
-	$anime = array();			//商品アニメタイトル
-	$image_path = array();		//商品画像パス
-	$totalprice = 0;			//商品合計金額
 
-	//カートの商品情報を配列に入れる関数
-	function cartselect(){
-		$GLOBALS['goodsid'] = $_SESSION['cartgoodsid'];
-		$GLOBALS['buyquantity'] = $_SESSION['cartquantity'];
 
-		for ($i = 0; $i < count($GLOBALS['goodsid']); $i++){
-			$GLOBALS['gid'] = $GLOBALS['goodsid'][$i];
 
-			// mysqliクラスのオブジェクトを作成
-			$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
-			if ($mysqli->connect_error) {
-				echo $mysqli->connect_error;
-				exit();
-			}
-			else {
-				$mysqli->set_charset("utf8");
-			}
-
-			// ここにDB処理いろいろ書く
-			$sql = "SELECT g.goods_name, g.goods_explanation, g.price, g.size, g.stock_quantity, a.anime_title, g.image_url
-					FROM goods g JOIN anime a
-					ON(g.anime_id = a.anime_id)
-					WHERE goods_id = ?";
-			if ($stmt = $mysqli->prepare($sql)) {
-				// 条件値をSQLにバインドする
-				$stmt->bind_param("i", $GLOBALS['gid']);
-
-				// 実行
-				$stmt->execute();
-
-				// 取得結果を変数にバインドする
-				$stmt->bind_result($name, $explanation, $price, $size, $stock_quantity, $anime, $image_path);
-				while ($stmt->fetch()) {
-					array_push($GLOBALS['goodsname'], $name);
-					array_push($GLOBALS['explanation'], $explanation);
-					array_push($GLOBALS['price'], $price."円");
-					array_push($GLOBALS['size'], $size);
-					array_push($GLOBALS['stock_quantity'], $stock_quantity."個");
-					array_push($GLOBALS['anime'], $anime);
-					array_push($GLOBALS['image_path'], $image_path);
-
-					$GLOBALS['totalprice'] += ($GLOBALS['buyquantity'][$i] * $price);
-				}
-				$stmt->close();
-			}
-			// DB接続を閉じる
-			$mysqli->close();
-		}
-
-	}
-
-	//セッションに商品IDと商品数量が存在しない場合
-	if (!isset($_SESSION['cartgoodsid']) && !isset($_SESSION['cartquantity'])) {
-		print "<br><br><br><div style=\"margin-left:250px\">カート内に商品が存在しません</div>";
-	}
-
-	//セッションに商品IDと商品数量が存在した場合
-	elseif(isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])){
-		cartselect();
-		print "<div id=\"kotei\">";
-		print "<form action=\"./cartdelete.php\" method=\"post\"><br>
-				<input type=\"submit\" value=\"カート内の商品をすべて削除する\">
-				</form>";
-		print "<form action=\"./buylogin.php\" method=\"post\">
-				<input type=\"submit\" value=\"レジに進む\">
-				</form>";
-		print "合計".$GLOBALS['totalprice']."円";
-		print "</div><div class=\"animebox\">";
-
-		for ($i = 0; $i < count($GLOBALS['goodsname']); $i++) {
-			print "<div id=\"animezentai\"><br><br>"
-				. "<div id=\"animegazou\"><img src=\"$image_path[$i]\" alt=\"商品画像\" height=\"400px\" width=\"300px\"></div>"
-				. "<div id=\"animebun\">"
-				. "<br><br>"
-				. "<table>"
-				. "<tr><td>アニメタイトル</td><td>$anime[$i]</td></tr>"
-				. "<tr><td>商品名</td><td>$goodsname[$i]</td></tr>"
-				. "<tr><td>価格</td><td>$price[$i]</td></tr>"
-				. "<tr><td>商品説明</td><td>$explanation[$i]</td></tr>"
-				. "<tr><td>商品サイズ</td><td>$size[$i]</td></tr>"
-				. "<tr><td>在庫数</td><td>$stock_quantity[$i]</td></tr>"
-				. "<tr><td>購入数</td><td>$buyquantity[$i]個</td></tr>"
-				. "</table>"
-				. "</div>"
-				. "</div>";
-		}
-	}
-?>
-</div>
-</div>
 </div>
 <div id="animekoukoku">
 <?php
@@ -347,16 +246,28 @@ if (isset($_SESSION['errormessage'])){
 <br>
 <div id="monsto">
 <ul randomdisplay="3" class="sample-list">
-<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/izanagi001.jpg" width="190" height="60" /></a></li>
-<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/images.jpg" width="190" height="60" /></a></li>
-<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/imagesragieri.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/random1.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/random2.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/random3.jpg" width="190" height="60" /></a></li>
 <li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/201501291305027188.jpeg" width="190" height="60" /></a></li>
 <li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/20141118_1a.png" width="190" height="60" /></a></li>
+<li><a href="/ushijimatown/php/search.php?keywords=ジョジョの奇妙な冒険"><img src="/ushijimatown/image/jojo01.png" width="190" height="60" /></a></li>
+<li><a href="/ushijimatown/php/search.php?keywords=魔法少女まどか☆マギカ"><img src="/ushijimatown/image/madomagi03.jpg" width="190" height="60" /></a></li>
+<li><a href="/ushijimatown/php/search.php?keywords=BLACK LAGOON"><img src="/ushijimatown/image/blacklagoon01.jpg" width="190" height="60" /></a></li>
+<li><a href="/ushijimatown/php/search.php?keywords=ドラゴンボール"><img src="/ushijimatown/image/doragonball01.gif" width="190" height="60" /></a></li>
+
+
 </ul>
 </div>
+
+
+<div id="twitter">
+<a class="twitter-timeline" href="https://twitter.com/ikedadaizo" data-widget-id="624386759351255040" width="190" height="50" >@ikedadaizoさんのツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+         if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
-
-
+</div>
+</div>
 </div>
 
 </body>

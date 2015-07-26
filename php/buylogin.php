@@ -200,7 +200,8 @@ $(function(){
 </table>
 </div>
 
-<div id="mannaka">
+<div id="mannaka" align="center">
+<br><br>
 <form action="./buylogincheck.php" method="post">
 	<table>
 	<tr>
@@ -216,6 +217,11 @@ $(function(){
 	<td colspan="2" align="center"><input type="submit" value="ログイン"></td>
 	</tr>
 	</table>
+	<?php
+	if (isset($_SESSION['buyloginmessage']))
+		print $_SESSION['buyloginmessage'];
+		unset($_SESSION['buyloginmessage']);
+	?>
 </form>
 <br>
 <p><a href="../html/newmember.html">新規登録される方はこちら</a></p><br>
