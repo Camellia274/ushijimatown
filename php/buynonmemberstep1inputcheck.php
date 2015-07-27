@@ -26,6 +26,10 @@ elseif ($_POST['address'] == null){
 elseif ($_POST['telno'] == null){
 	$GLOBALS['flag'] = false;
 }
+//メールアドレスが入力されていなかった場合
+elseif ($_POST['useremail'] == null){
+	$GLOBALS['flag'] = false;
+}
 
 switch ($flag){
 	//入力されていない項目がある場合

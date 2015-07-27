@@ -171,7 +171,7 @@ $(function(){
 </form>
 </div>
 <div class="sab" id="sab" >
-<a href="../php/cart.php"><img src="../image/cart.png"  width="120" height="35"></a>
+<a href="/ushijimatown/php/cart.php"><img src="../image/cart.png"  width="120" height="35"></a>
 <a href="../html/goodshistory.html"><img src="../image/rireki.png"  width="120" height="35"></a>
 </div>
 
@@ -181,7 +181,7 @@ $(function(){
 
 <div id="anime">
 <div id="animetitle">
-<div id="animeitiran"><center><a href="../html/animelist.html">アニメ一覧</a></center></div>
+<div id="animeitiran"><center><a href="animelist.html">アニメ一覧</a></center></div>
 
 
 <table width="200" style="margin-left:10px;" >
@@ -200,22 +200,21 @@ $(function(){
 </table>
 </div>
 <div id="mannaka" align="center">
-<?php
-unset($_SESSION['cartgoodsid']);
-unset($_SESSION['cartquantity']);
-unset($_SESSION['cartdeliverymethod']);
-unset($_SESSION['cartdeliverytime']);
-unset($_SESSION['cartpaymentmethod']);
-?>
-配送先住所→配送方法→支払方法→購入確認→<font color="#ff0000">購入完了</font><br><br>
+配送先住所→配送方法→<font color="#ff0000">支払方法</font>→購入確認→購入完了<br><br>
 
-<p>購入が完了しました</p>
-
-
-
-<form action="../html/index.html" method="post">
-<input type="submit" value="トップへ">
+<form action="./buynonmemberstep4.php" method="post">
+<table>
+<tr><td colspan="2" align="center">支払方法</td></tr>
+<tr><td align="center"><input type="radio" value="代金引換" checked="checked" name="paymentmethod">代金引換</td></tr>
+<tr><td align="center"><input type="radio" value="クレジットカード" name="paymentmethod">クレジットカード</td></tr>
+<tr>
+<td align="center"><input type="submit" value="次へ"></td>
+</tr>
+</table>
 </form>
+
+
+
 </div>
 <div id="animekoukoku">
 <?php
@@ -256,28 +255,20 @@ if (isset($_SESSION['errormessage'])){
 <br>
 <div id="monsto">
 <ul randomdisplay="3" class="sample-list">
-<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/random1.jpg" width="190" height="60" /></a></li>
-<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/random2.jpg" width="190" height="60" /></a></li>
-<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/random3.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/izanagi001.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/images.jpg" width="190" height="60" /></a></li>
+<li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/imagesragieri.jpg" width="190" height="60" /></a></li>
 <li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/201501291305027188.jpeg" width="190" height="60" /></a></li>
 <li><a href="http://www.monster-strike.com/"><img src="/ushijimatown/image/20141118_1a.png" width="190" height="60" /></a></li>
 <li><a href="/ushijimatown/php/search.php?keywords=ジョジョの奇妙な冒険"><img src="/ushijimatown/image/jojo01.png" width="190" height="60" /></a></li>
 <li><a href="/ushijimatown/php/search.php?keywords=魔法少女まどか☆マギカ"><img src="/ushijimatown/image/madomagi03.jpg" width="190" height="60" /></a></li>
 <li><a href="/ushijimatown/php/search.php?keywords=BLACK LAGOON"><img src="/ushijimatown/image/blacklagoon01.jpg" width="190" height="60" /></a></li>
 <li><a href="/ushijimatown/php/search.php?keywords=ドラゴンボール"><img src="/ushijimatown/image/doragonball01.gif" width="190" height="60" /></a></li>
-
-
 </ul>
 </div>
+</div>
 
 
-<div id="twitter">
-<a class="twitter-timeline" href="https://twitter.com/ikedadaizo" data-widget-id="624386759351255040" width="190" height="50" >@ikedadaizoさんのツイート</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-         if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</div>
-</div>
-</div>
 </div>
 
 </body>
