@@ -236,6 +236,10 @@ if(isset($_SESSION['inputcheckmessage'])){
 <td align="left">電話番号</td><td align="left"><input type="text" name="telno" style="width: 200px"
 													placeholder="例)092-441-2131"></td>
 </tr>
+<tr>
+<td align="left">メールアドレス</td><td align="left"><input type="text" name="mailaddress" style="width: 200px"
+													placeholder="例)abcd1234@gmail.com"></td>
+</tr>
 </table>
 <br><br>
 <input type="submit" value="次へ">
