@@ -202,7 +202,119 @@ $(function(){
 
 <div id="mannaka" align="center">
 <?php
+//グローバル変数
+$memberid = null;		//会員ID
+$name = null;			//氏名
+$kana = null;			//フリガナ
+$address = null;		//住所
+$postal_code = null;	//郵便番号
+$email_address = null;	//メールアドレス
+$phone_number = null;	//電話番号
+$point = null;			//ポイント
+$goodsname = array(); 	//商品名
+$price = array();		//価格
+$anime = array();		//アニメタイトル
+$totalprice = 0;		//合計金額
+$goodsid = null;		//商品ID
+$gid = null;			//商品ID_DBfor用
+$buyquantity = null;	//購入数量
+?>
+
+<?php
+//会員情報を取得
+function memberinfo(){
+	$GLOBALS['memberid'] = $_SESSION['userid'];
+
+	// mysqliクラスのオブジェクトを作成
+	$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
+	if ($mysqli->connect_error) {
+		echo $mysqli->connect_error;
+		exit();
+	}
+	else {
+		$mysqli->set_charset("utf8");
+	}
+
+	// ここにDB処理いろいろ書く
+	$sql = "SELECT name, kana, address, postal_code, email_address, phone_number, point "
+		 . "FROM member "
+		 . "WHERE member_id = ?";
+	if ($stmt = $mysqli->prepare($sql)) {
+		// 条件値をSQLにバインドする
+		$stmt->bind_param("i", $GLOBALS['memberid']);
+
+		// 実行
+		$stmt->execute();
+
+		// 取得結果を変数にバインドする
+		$stmt->bind_result($name, $kana, $address, $postal_code, $email_address, $phone_number, $point);
+		while ($stmt->fetch()) {
+			$GLOBALS['name'] = $name;
+			$GLOBALS['kana'] = $kana;
+			$GLOBALS['address'] = $address;
+			$GLOBALS['postal_code'] = $postal_code;
+			$GLOBALS['email_address'] = $email_address;
+			$GLOBALS['phone_number'] = $phone_number;
+			$GLOBALS['point'] = $point;
+		}
+		$stmt->close();
+	}
+	// DB接続を閉じる
+	$mysqli->close();
+}
+?>
+
+<?php
+//カートの商品情報を取得
+function buygoodsselect(){
+	$GLOBALS['goodsid'] = $_SESSION['cartgoodsid'];
+	$GLOBALS['buyquantity'] = $_SESSION['cartquantity'];
+
+	for ($i = 0; $i < count($GLOBALS['goodsid']); $i++){
+		$GLOBALS['gid'] = $GLOBALS['goodsid'][$i];
+
+		// mysqliクラスのオブジェクトを作成
+		$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
+		if ($mysqli->connect_error) {
+			echo $mysqli->connect_error;
+			exit();
+		}
+		else {
+			$mysqli->set_charset("utf8");
+		}
+
+		// ここにDB処理いろいろ書く
+		$sql = "SELECT g.goods_name, g.price, a.anime_title "
+			 . "FROM goods g JOIN anime a "
+			 . "ON(g.anime_id = a.anime_id) "
+			 . "WHERE goods_id = ?";
+		if ($stmt = $mysqli->prepare($sql)) {
+			// 条件値をSQLにバインドする
+			$stmt->bind_param("i", $GLOBALS['gid']);
+
+			// 実行
+			$stmt->execute();
+
+			// 取得結果を変数にバインドする
+			$stmt->bind_result($name, $price, $anime);
+			while ($stmt->fetch()) {
+				array_push($GLOBALS['goodsname'], $name);
+				array_push($GLOBALS['price'], $price."円");
+				array_push($GLOBALS['anime'], $anime);
+
+				$GLOBALS['totalprice'] += ($GLOBALS['buyquantity'][$i] * $price);
+			}
+			$stmt->close();
+		}
+		// DB接続を閉じる
+		$mysqli->close();
+	}
+}
+?>
+
+<?php
 /*
+//購入履歴に挿入
 function buyinsert(){
 	// mysqliクラスのオブジェクトを作成
 	$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
@@ -236,6 +348,19 @@ function buyinsert(){
 ?>
 
 <?php
+//会員情報を取得する
+memberinfo();
+
+//カートの商品情報を取得する
+buygoodsselect();
+
+//購入履歴にデータを挿入
+
+
+//購入履歴明細にデータを挿入
+
+
+//セッションを消す
 unset($_SESSION['cartgoodsid']);
 unset($_SESSION['cartquantity']);
 unset($_SESSION['cartdeliverymethod']);
@@ -245,8 +370,6 @@ unset($_SESSION['cartpaymentmethod']);
 配送先住所→配送方法→支払方法→購入確認→<font color="#ff0000">購入完了</font><br><br>
 
 <p>購入が完了しました</p>
-
-
 
 <form action="../html/index.html" method="post">
 <input type="submit" value="トップへ">
