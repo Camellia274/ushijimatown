@@ -239,8 +239,8 @@ function memberinfo(){
 
 	// ここにDB処理いろいろ書く
 	$sql = "SELECT name, kana, address, postal_code, email_address, phone_number, point "
-			. "FROM member "
-			. "WHERE member_id = ?";
+		 . "FROM member "
+		 . "WHERE member_id = ?";
 	if ($stmt = $mysqli->prepare($sql)) {
 		// 条件値をSQLにバインドする
 		$stmt->bind_param("i", $GLOBALS['memberid']);
