@@ -333,6 +333,11 @@ print "合計" . $totalprice . "円";
 ?>
 <br><br>
 <table>
+<tr><td>保有ポイント</td><td>xxxポイント</td></tr>
+</table>
+<br>
+
+<table>
 <tr><td colspan="2" align="center">配送先</td></tr>
 <tr><td>氏名</td><td><?php print $name; ?></td></tr>
 <tr><td>郵便番号</td><td><?php print $postal_code; ?></td></tr>
@@ -351,7 +356,7 @@ print "合計" . $totalprice . "円";
 
 <table>
 <tr><td>支払方法：</td><td><?php print $_SESSION['cartpaymentmethod']; ?></td></tr>
-</table>
+</table><br>
 <input type="submit" value="購入確定">
 </form>
 </div>

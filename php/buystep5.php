@@ -200,6 +200,38 @@ $(function(){
 </table>
 </div>
 <div id="mannaka" align="center">
+
+<?php
+function buyinsert(){
+	// mysqliクラスのオブジェクトを作成
+	$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
+	if ($mysqli->connect_error) {
+		echo $mysqli->connect_error;
+		exit();
+	}
+	else {
+		$mysqli->set_charset("utf8");
+	}
+
+	// ここにDB処理いろいろ書く
+	$sql = "INSERT INTO member(name, kana, address, postal_code, password, email_address, phone_number)
+				VALUES(?,?,?,?,?,?,?)";
+	if ($stmt = $mysqli->prepare($sql)) {
+		// 条件値をSQLにバインドする
+		$stmt->bind_param("sssssss", $_SESSION['name'], $_SESSION['kana'], $_SESSION['address'],
+				$_SESSION['postno'], $_SESSION['userpassword'], $_SESSION['useremail'],
+				$_SESSION['telno']);
+
+		// 実行
+		$stmt->execute();
+
+		$stmt->close();
+	}
+	// DB接続を閉じる
+	$mysqli->close();
+}
+?>
+
 <?php
 unset($_SESSION['cartgoodsid']);
 unset($_SESSION['cartquantity']);

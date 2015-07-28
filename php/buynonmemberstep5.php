@@ -201,6 +201,10 @@ $(function(){
 </div>
 <div id="mannaka" align="center">
 <?php
+
+?>
+
+<?php
 unset($_SESSION['cartgoodsid']);
 unset($_SESSION['cartquantity']);
 unset($_SESSION['name']);
