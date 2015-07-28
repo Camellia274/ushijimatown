@@ -336,6 +336,10 @@ print "合計" . $totalprice . "円";
 <br><br>
 <table>
 <tr><td>保有ポイント</td><td><?php print $point; ?>ポイント</td></tr>
+<tr>
+<td><input type="radio" value="使用しない" name="usepoint" checked="checked">ポイントを使用しない</td>
+<td><input type="radio" value="全て使用する" name="usepoint">ポイントを全て使用する</td>
+</tr>
 </table>
 <br>
 
