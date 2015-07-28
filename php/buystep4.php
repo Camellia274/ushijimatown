@@ -213,6 +213,7 @@ $address = null;		//住所
 $postal_code = null;	//郵便番号
 $email_address = null;	//メールアドレス
 $phone_number = null;	//電話番号
+$point = null;			//ポイント
 $goodsname = array(); 	//商品名
 $price = array();		//価格
 $anime = array();		//アニメタイトル
@@ -236,7 +237,7 @@ function memberinfo(){
 	}
 
 	// ここにDB処理いろいろ書く
-	$sql = "SELECT name, address, postal_code, email_address, phone_number "
+	$sql = "SELECT name, address, postal_code, email_address, phone_number, point "
 			. "FROM member "
 			. "WHERE member_id = ?";
 	if ($stmt = $mysqli->prepare($sql)) {
@@ -247,13 +248,14 @@ function memberinfo(){
 		$stmt->execute();
 
 		// 取得結果を変数にバインドする
-		$stmt->bind_result($name, $address, $postal_code, $email_address, $phone_number);
+		$stmt->bind_result($name, $address, $postal_code, $email_address, $phone_number, $point);
 		while ($stmt->fetch()) {
 			$GLOBALS['name'] = $name;
 			$GLOBALS['address'] = $address;
 			$GLOBALS['postal_code'] = $postal_code;
 			$GLOBALS['email_address'] = $email_address;
 			$GLOBALS['phone_number'] = $phone_number;
+			$GLOBALS['point'] = $point;
 		}
 		$stmt->close();
 	}
@@ -333,7 +335,7 @@ print "合計" . $totalprice . "円";
 ?>
 <br><br>
 <table>
-<tr><td>保有ポイント</td><td>xxxポイント</td></tr>
+<tr><td>保有ポイント</td><td><?php print $point; ?>ポイント</td></tr>
 </table>
 <br>
 
