@@ -199,9 +199,10 @@ $(function(){
 </tr>
 </table>
 </div>
-<div id="mannaka" align="center">
 
+<div id="mannaka" align="center">
 <?php
+/*
 function buyinsert(){
 	// mysqliクラスのオブジェクトを作成
 	$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
@@ -214,8 +215,8 @@ function buyinsert(){
 	}
 
 	// ここにDB処理いろいろ書く
-	$sql = "INSERT INTO member(name, kana, address, postal_code, password, email_address, phone_number)
-				VALUES(?,?,?,?,?,?,?)";
+	$sql = "INSERT INTO member(name, kana, address, postal_code, password, email_address, phone_number) "
+		 . "VALUES(?,?,?,?,?,?,?)";
 	if ($stmt = $mysqli->prepare($sql)) {
 		// 条件値をSQLにバインドする
 		$stmt->bind_param("sssssss", $_SESSION['name'], $_SESSION['kana'], $_SESSION['address'],
@@ -230,6 +231,7 @@ function buyinsert(){
 	// DB接続を閉じる
 	$mysqli->close();
 }
+*/
 ?>
 
 <?php

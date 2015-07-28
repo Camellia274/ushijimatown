@@ -208,7 +208,8 @@ $_SESSION['cartpaymentmethod'] = $_POST['paymentmethod'];
 <?php
 //グローバル変数
 $memberid = null;		//会員ID
-$name = null;			//会員名
+$name = null;			//氏名
+$kana = null;			//フリガナ
 $address = null;		//住所
 $postal_code = null;	//郵便番号
 $email_address = null;	//メールアドレス
@@ -237,7 +238,7 @@ function memberinfo(){
 	}
 
 	// ここにDB処理いろいろ書く
-	$sql = "SELECT name, address, postal_code, email_address, phone_number, point "
+	$sql = "SELECT name, kana, address, postal_code, email_address, phone_number, point "
 			. "FROM member "
 			. "WHERE member_id = ?";
 	if ($stmt = $mysqli->prepare($sql)) {
@@ -248,9 +249,10 @@ function memberinfo(){
 		$stmt->execute();
 
 		// 取得結果を変数にバインドする
-		$stmt->bind_result($name, $address, $postal_code, $email_address, $phone_number, $point);
+		$stmt->bind_result($name, $kana, $address, $postal_code, $email_address, $phone_number, $point);
 		while ($stmt->fetch()) {
 			$GLOBALS['name'] = $name;
+			$GLOBALS['kana'] = $kana;
 			$GLOBALS['address'] = $address;
 			$GLOBALS['postal_code'] = $postal_code;
 			$GLOBALS['email_address'] = $email_address;
@@ -346,6 +348,7 @@ print "合計" . $totalprice . "円";
 <table>
 <tr><td colspan="2" align="center">配送先</td></tr>
 <tr><td>氏名</td><td><?php print $name; ?></td></tr>
+<tr><td>フリガナ</td><td><?php print $kana; ?></td></tr>
 <tr><td>郵便番号</td><td><?php print $postal_code; ?></td></tr>
 <tr><td>住所</td><td><?php print $address; ?></td></tr>
 <tr><td>メールアドレス</td><td><?php print $email_address; ?></td></tr>

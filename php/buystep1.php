@@ -221,7 +221,7 @@ $(function(){
 		}
 
 		// ここにDB処理いろいろ書く
-		$sql = "SELECT name, address, postal_code, email_address, phone_number "
+		$sql = "SELECT name, address, postal_code, email_address, phone_number, kana "
 			 . "FROM member "
 			 . "WHERE member_id = ?";
 		if ($stmt = $mysqli->prepare($sql)) {
@@ -232,12 +232,13 @@ $(function(){
 			$stmt->execute();
 
 			// 取得結果を変数にバインドする
-			$stmt->bind_result($name, $address, $postal_code, $email_address, $phone_number);
+			$stmt->bind_result($name, $address, $postal_code, $email_address, $phone_number, $kana);
 			while ($stmt->fetch()) {
 				print "<form action=\"./buystep2.php\" method=\"post\">
 	            		<table>
 					  	<tr><td colspan=\"2\" align=\"center\">配送先の確認</td></tr>
        				  	<tr><td>氏名</td><td>$name</td></tr>
+       				  	<tr><td>フリガナ</td><td>$kana</td></tr>
        					<tr><td>郵便番号</td><td>$postal_code</td></tr>
        				 	<tr><td>住所</td><td>$address</td></tr>
        					<tr><td>メールアドレス</td><td>$email_address</td></tr>
