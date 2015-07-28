@@ -301,7 +301,7 @@ print "合計" . $totalprice . "円";
 
 <table>
 <tr><td>支払方法：</td><td><?php print $_SESSION['cartpaymentmethod']; ?></td></tr>
-</table>
+</table><br>
 <input type="submit" value="購入確定">
 </form>
 </div>
