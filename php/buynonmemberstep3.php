@@ -200,6 +200,10 @@ $(function(){
 </table>
 </div>
 <div id="mannaka" align="center">
+<?php
+$_SESSION['deliverymethod'] = $_POST['deliverymethod'];
+$_SESSION['deliverytime'] = $_POST['deliverytime'];
+?>
 配送先住所→配送方法→<font color="#ff0000">支払方法</font>→購入確認→購入完了<br><br>
 
 <form action="./buynonmemberstep4.php" method="post">

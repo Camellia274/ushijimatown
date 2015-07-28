@@ -50,6 +50,7 @@ switch ($flag){
 		$_SESSION['postno'] = $_POST['postno'];
 		$_SESSION['address'] = $_POST['address'];
 		$_SESSION['telno'] = $_POST['telno'];
+		$_SESSION['useremail'] = $_POST['useremail'];
 
 		//配送方法画面へ進む
 		header('location: ./buynonmemberstep2.php');

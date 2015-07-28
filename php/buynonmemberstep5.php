@@ -201,113 +201,24 @@ $(function(){
 </div>
 <div id="mannaka" align="center">
 <?php
-$_SESSION['cartpaymentmethod'] = $_POST['paymentmethod'];
+unset($_SESSION['cartgoodsid']);
+unset($_SESSION['cartquantity']);
+unset($_SESSION['name']);
+unset($_SESSION['kana']);
+unset($_SESSION['postno']);
+unset($_SESSION['address']);
+unset($_SESSION['useremail']);
+unset($_SESSION['telno']);
+unset($_SESSION['deliverymethod']);
+unset($_SESSION['deliverytime']);
+unset($_SESSION['cartpaymentmethod']);
 ?>
+配送先住所→配送方法→支払方法→購入確認→<font color="#ff0000">購入完了</font><br><br>
 
-<?php
-//グローバル変数
-$goodsname = array(); 	//商品名
-$price = array();		//価格
-$anime = array();		//アニメタイトル
-$totalprice = 0;		//合計金額
-$goodsid = null;		//商品ID
-$gid = null;			//商品ID_DBfor用
-$buyquantity = null;	//購入数量
-
-//カートの商品情報を取得する
-function buygoodsselect(){
-	$GLOBALS['goodsid'] = $_SESSION['cartgoodsid'];
-	$GLOBALS['buyquantity'] = $_SESSION['cartquantity'];
-
-	for ($i = 0; $i < count($GLOBALS['goodsid']); $i++){
-		$GLOBALS['gid'] = $GLOBALS['goodsid'][$i];
-
-		// mysqliクラスのオブジェクトを作成
-		$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
-		if ($mysqli->connect_error) {
-			echo $mysqli->connect_error;
-			exit();
-		}
-		else {
-			$mysqli->set_charset("utf8");
-		}
-
-		// ここにDB処理いろいろ書く
-		$sql = "SELECT g.goods_name, g.price, a.anime_title "
-				. "FROM goods g JOIN anime a "
-				. "ON(g.anime_id = a.anime_id) "
-				. "WHERE goods_id = ?";
-		if ($stmt = $mysqli->prepare($sql)) {
-			// 条件値をSQLにバインドする
-			$stmt->bind_param("i", $GLOBALS['gid']);
-
-			// 実行
-			$stmt->execute();
-
-			// 取得結果を変数にバインドする
-			$stmt->bind_result($name, $price, $anime);
-			while ($stmt->fetch()) {
-				array_push($GLOBALS['goodsname'], $name);
-				array_push($GLOBALS['price'], $price."円");
-				array_push($GLOBALS['anime'], $anime);
-
-				$GLOBALS['totalprice'] += ($GLOBALS['buyquantity'][$i] * $price);
-			}
-			$stmt->close();
-		}
-		// DB接続を閉じる
-		$mysqli->close();
-	}
-}
-?>
-配送先住所→配送方法→支払方法→<font color="#ff0000">購入確認</font>→購入完了<br><br>
-
-<?php
-if (isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])){
-	buygoodsselect();
-}
-?>
-
-<form action="./buynonmemberstep5.php" method="post">
-<?php
-for ($i = 0; $i < count($goodsname); $i++){
-	print "<table>"
-			. "<tr><td>アニメタイトル</td><td>$anime[$i]</td></tr>"
-			. "<tr><td>商品名</td><td>$goodsname[$i]</td></tr>"
-			. "<tr><td>価格</td><td>$price[$i]</td></tr>"
-			. "<tr><td>数量</td><td>$buyquantity[$i]個</td></tr>"
-			. "</table><br>";
-}
-print "合計" . $totalprice . "円";
-?>
-<br><br>
-<table>
-<tr><td colspan="2" align="center">配送先</td></tr>
-<tr><td>氏名</td><td><?php print $_SESSION['name']; ?></td></tr>
-<tr><td>フリガナ</td><td><?php print $_SESSION['kana']; ?></td></tr>
-<tr><td>郵便番号</td><td><?php print $_SESSION['postno']; ?></td></tr>
-<tr><td>住所</td><td><?php print $_SESSION['address']; ?></td></tr>
-<tr><td>メールアドレス</td><td><?php print $_SESSION['useremail']; ?></td></tr>
-<tr><td>電話番号</td><td><?php print $_SESSION['telno']; ?></td></tr>
-</table>
-<br>
-
-<table>
-<tr><td colspan="2" align="center">配送情報</td></tr>
-<tr><td>配送方法：</td><td><?php print $_SESSION['deliverymethod']; ?></td></tr>
-<tr><td>配送時間：</td><td><?php print $_SESSION['deliverytime']; ?></td></tr>
-</table>
-<br>
-
-<table>
-<tr><td>支払方法：</td><td><?php print $_SESSION['cartpaymentmethod']; ?></td></tr>
-</table>
-<input type="submit" value="購入確定">
+<p>購入が完了しました</p><br>
+<form action="../html/index.html" method="post">
+<input type="submit" value="トップへ">
 </form>
-</div>
-
-
-
 
 
 </div>
