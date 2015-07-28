@@ -285,9 +285,9 @@ function buygoodsselect(){
 
 		// ここにDB処理いろいろ書く
 		$sql = "SELECT g.goods_name, g.price, a.anime_title "
-				. "FROM goods g JOIN anime a "
-				. "ON(g.anime_id = a.anime_id) "
-				. "WHERE goods_id = ?";
+			 . "FROM goods g JOIN anime a "
+			 . "ON(g.anime_id = a.anime_id) "
+			 . "WHERE goods_id = ?";
 		if ($stmt = $mysqli->prepare($sql)) {
 			// 条件値をSQLにバインドする
 			$stmt->bind_param("i", $GLOBALS['gid']);

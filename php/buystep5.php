@@ -215,13 +215,14 @@ function buyinsert(){
 	}
 
 	// ここにDB処理いろいろ書く
-	$sql = "INSERT INTO member(name, kana, address, postal_code, password, email_address, phone_number) "
-		 . "VALUES(?,?,?,?,?,?,?)";
+	$sql = "INSERT INTO history(member_id, date, time, settlement_total_price, payment_method, use_point, "
+		 . "earn_point, delivery_method, delivery_time, name, postal_code, address, phone_number) "
+		 . "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	if ($stmt = $mysqli->prepare($sql)) {
 		// 条件値をSQLにバインドする
-		$stmt->bind_param("sssssss", $_SESSION['name'], $_SESSION['kana'], $_SESSION['address'],
-				$_SESSION['postno'], $_SESSION['userpassword'], $_SESSION['useremail'],
-				$_SESSION['telno']);
+		$stmt->bind_param("issisiissssss", $_SESSION['userid'], date("Y-m-d"), date("H:i:s", time()),
+				合計金額, $_SESSION['cartpaymentmethod'], 使用ポイント, 獲得ポイント,
+				$_SESSION['cartdeliverymethod'], $_SESSION['cartdeliverytime'], 名前, 郵便番号, 住所, 電話番号);
 
 		// 実行
 		$stmt->execute();
