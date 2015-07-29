@@ -315,11 +315,11 @@ function buygoodsselect(){
 //ポイント使用処理
 /*
 function usepoint(){
-	$pointusetype = $_POST['usepoint'];
+	$GLOBALS['pointusetype'] = $_POST['pointusetype'];
 
-	switch ($pointusetype) {
+	switch ($GLOBALS['pointusetype']) {
 		case "使用しない":
-			$use_point = 0;
+			$GLOBALS['use_point'] = 0;
 			break;
 
 		case "全て使用する":
@@ -331,7 +331,7 @@ function usepoint(){
 //ポイント獲得処理
 /*
 function earnpoint(){
-	$earn_point = floor($totalprice / 100);
+	$GLOBALS['earn_point'] = floor($GLOBALS['totalprice'] / 100);
 }
 */
 
@@ -355,7 +355,7 @@ function buyinsert(){
 	if ($stmt = $mysqli->prepare($sql)) {
 		// 条件値をSQLにバインドする
 		$stmt->bind_param("issisiissssss", $_SESSION['userid'], date("Y-m-d"), date("H:i:s", time()),
-							$totalprice, $_SESSION['cartpaymentmethod'], 使用ポイント, 獲得ポイント,
+							$totalprice, $_SESSION['cartpaymentmethod'], $use_point, $earn_point,
 							$_SESSION['cartdeliverymethod'], $_SESSION['cartdeliverytime'], $name, $postal_code,
 							$address, $phone_number);
 
