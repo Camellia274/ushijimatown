@@ -311,7 +311,7 @@ function buygoodsselect(){
 	}
 }
 ?>
-配送先住所→配送方法→支払方法→<font color="#ff0000">購入確認</font>→購入完了<br><br>
+<br><br><br>配送先住所→配送方法→支払方法→<font size="5" color="#ff0000">購入確認</font>→購入完了<br><br>
 
 <?php
 if (isset($_SESSION['userid']) && isset($_SESSION['username'])) {

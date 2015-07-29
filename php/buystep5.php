@@ -455,7 +455,7 @@ unset($_SESSION['cartdeliverymethod']);
 unset($_SESSION['cartdeliverytime']);
 unset($_SESSION['cartpaymentmethod']);
 ?>
-配送先住所→配送方法→支払方法→購入確認→<font color="#ff0000">購入完了</font><br><br>
+配送先住所→配送方法→支払方法→購入確認→<font size="5" color="#ff0000">購入完了</font><br><br>
 
 <p>購入が完了しました</p>
 

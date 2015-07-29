@@ -201,7 +201,7 @@ $(function(){
 </div>
 
 <div id="mannaka" align="center">
-<font color="#ff0000">配送先住所</font>→配送方法→支払方法→購入確認→購入完了<br><br>
+<br><br><br><font size="5"color="#ff0000">配送先住所</font>→配送方法→支払方法→購入確認→購入完了<br><br>
 <?php
 	//グローバル変数
 	$memberid = null;
