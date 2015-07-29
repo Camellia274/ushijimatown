@@ -189,8 +189,27 @@ margin-left:20px;
 	width:770px;
 	height:100px;
 	clear:both;
+}
+#sakujo{
+	width:100px;
+	heigth:100px;
+	float:left;
 
 }
+#goukei{
+	width:150px;
+	heigth:100px;
+	float:left;
+		margin-left:270px;
+}
+#regihesusumu{
+	width:100px;
+	heigth:100px;
+	float:right;
+		margin-right:150px;
+
+}
+
 /************↑スクロール固定↑***********/
 /************↓スクロール↓**********/
 .animebox01 {
@@ -411,49 +430,4 @@ background-image: url(../image/next_on.png);
 
 width: 200px;
 height: 100px;
-}
-
-
-input#regi{
-	-moz-box-shadow:inset 0px 0px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 0px 0px 0px #ffffff;
-	box-shadow:inset 0px 0px 0px 0px #ffffff;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffe587), color-stop(1, #faac4d) );
-	background:-moz-linear-gradient( center top, #ffe587 5%, #faac4d 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe587', endColorstr='#faac4d');
-	background-color:#ffe587;
-	-webkit-border-top-left-radius:6px;
-	-moz-border-radius-topleft:6px;
-	border-top-left-radius:6px;
-	-webkit-border-top-right-radius:6px;
-	-moz-border-radius-topright:6px;
-	border-top-right-radius:6px;
-	-webkit-border-bottom-right-radius:6px;
-	-moz-border-radius-bottomright:6px;
-	border-bottom-right-radius:6px;
-	-webkit-border-bottom-left-radius:6px;
-	-moz-border-radius-bottomleft:6px;
-	border-bottom-left-radius:6px;
-text-indent:0;
-	border:1px solid #fff2ff;
-	display:inline-block;
-	color:#333133;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:normal;
-	font-style:normal;
-height:38px;
-	line-height:38px;
-width:174px;
-	text-decoration:none;
-	text-align:center;
-	text-shadow:1px 0px 0px #fae9d0;
-}#regi:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #faac4d), color-stop(1, #ffe587) );
-	background:-moz-linear-gradient( center top, #faac4d 5%, #ffe587 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#faac4d', endColorstr='#ffe587');
-	background-color:#faac4d;
-}#regi:active {
-	position:relative;
-	top:1px;
 }

@@ -277,13 +277,13 @@ $(function(){
 	elseif(isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])){
 		cartselect();
 		print "<div id=\"kotei\">";
-		print "<form action=\"./cartdelete.php\" method=\"post\"><br>
+		print "<div id=\"sakujo\"><form action=\"./cartdelete.php\" method=\"post\"><br>
 				<input type=\"submit\" value=\"カート内の商品をすべて削除する\">
-				</form>";
-		print "<form action=\"./buylogin.php\" method=\"post\">
-				<input type=\"image\" src=\"../image/plokujytr.jpg\" width=\"200\" height=\"35\" alt=\"送信する\">
-				</form>";
-		print "合計".$GLOBALS['totalprice']."円";
+				</form></div>";
+		print "<div id=\"goukei\"><br><font size=\"5\" >合計".$GLOBALS['totalprice']."円</font></div>";
+		print "<div id=\"regihesusumu\"><br><form action=\"./buylogin.php\" method=\"post\">
+				<input type=\"image\" src=\"../image/plokujytr.jpg\" width=\"200\" height=\"35\" alt=\"レジへ進む\">
+				</form></div>";
 		print "</div><div class=\"animebox\">";
 
 		for ($i = 0; $i < count($GLOBALS['goodsname']); $i++) {
