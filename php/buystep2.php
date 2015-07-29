@@ -219,10 +219,8 @@ $(function(){
 <option value="16時～18時">16時～18時
 </select>
 </td></tr>
-<tr>
-<td align="center" colspan="2"><input type="submit" value="次へ"></td>
-</tr>
-</table>
+</table><br>
+<input type="submit" value="次へ">
 </form>
 </div>
 <div id="animekoukoku">

@@ -243,8 +243,8 @@ $(function(){
        				 	<tr><td>住所</td><td>$address</td></tr>
        					<tr><td>メールアドレス</td><td>$email_address</td></tr>
    	    			   	<tr><td>電話番号</td><td>$phone_number</td></tr>
-   	    			   	<tr><td colspan=\"2\" align=\"center\"><input type=\"submit\" value=\"次へ\"></td></tr>
-				 	  	</table>
+   	    			   	</table><br>
+   	    			   	<input type=\"submit\" value=\"次へ\">
 						</form>";
 			}
 			$stmt->close();

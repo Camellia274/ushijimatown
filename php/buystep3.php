@@ -213,10 +213,8 @@ $_SESSION['cartdeliverytime'] = $_POST['deliverytime'];
 <tr><td colspan="2" align="center">支払方法</td></tr>
 <tr><td align="center"><input type="radio" value="代金引換" checked="checked" name="paymentmethod">代金引換</td></tr>
 <tr><td align="center"><input type="radio" value="クレジットカード" name="paymentmethod">クレジットカード</td></tr>
-<tr>
-<td align="center"><input type="submit" value="次へ"></td>
-</tr>
-</table>
+</table><br>
+<input type="submit" value="次へ">
 </form>
 </div>
 <div id="animekoukoku">
