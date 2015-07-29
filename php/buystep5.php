@@ -329,7 +329,40 @@ function usepoint(){
 */
 
 //保有ポイント取得処理
+function pointselect(){
+	$GLOBALS['memberid'] = $_SESSION['userid'];
 
+	// mysqliクラスのオブジェクトを作成
+	$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
+	if ($mysqli->connect_error) {
+		echo $mysqli->connect_error;
+		exit();
+	}
+	else {
+		$mysqli->set_charset("utf8");
+	}
+
+	// ここにDB処理いろいろ書く
+	$sql = "SELECT point "
+		 . "FROM member "
+		 . "WHERE member_id = ?";
+	if ($stmt = $mysqli->prepare($sql)) {
+		// 条件値をSQLにバインドする
+		$stmt->bind_param("i", $GLOBALS['memberid']);
+
+		// 実行
+		$stmt->execute();
+
+		// 取得結果を変数にバインドする
+		$stmt->bind_result($point);
+		while ($stmt->fetch()) {
+			$GLOBALS['point'] = $point;
+		}
+		$stmt->close();
+	}
+	// DB接続を閉じる
+	$mysqli->close();
+}
 
 //獲得ポイント追加処理
 function earnpointadd(){
@@ -407,7 +440,7 @@ buygoodsselect();
 //usepoint();
 
 //保有ポイント取得処理
-
+//pointselect();
 
 //獲得ポイント追加処理
 //earnpointadd();
