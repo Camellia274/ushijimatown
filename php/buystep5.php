@@ -328,12 +328,39 @@ function usepoint(){
 }
 */
 
-//ポイント獲得処理
-/*
-function earnpoint(){
+//保有ポイント取得処理
+
+
+//獲得ポイント追加処理
+function earnpointadd(){
 	$GLOBALS['earn_point'] = floor($GLOBALS['totalprice'] / 100);
+	$GLOBALS['point'] += $GLOBALS['earn_point'];
+
+	// mysqliクラスのオブジェクトを作成
+	$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
+	if ($mysqli->connect_error) {
+		echo $mysqli->connect_error;
+		exit();
+	}
+	else {
+		$mysqli->set_charset("utf8");
+	}
+
+	// ここにDB処理いろいろ書く
+	$sql = "UPDATE member SET point = ? "
+		 . "WHERE member_id = ?";
+	if ($stmt = $mysqli->prepare($sql)) {
+		// 条件値をSQLにバインドする
+		$stmt->bind_param("ii", $GLOBALS['point'], $_SESSION['userid']);
+
+		// 実行
+		$stmt->execute();
+
+		$stmt->close();
+	}
+	// DB接続を閉じる
+	$mysqli->close();
 }
-*/
 
 //購入履歴に挿入
 /*
@@ -379,8 +406,11 @@ buygoodsselect();
 //ポイント使用処理
 //usepoint();
 
-//ポイント獲得処理
-//earnpoint();
+//保有ポイント取得処理
+
+
+//獲得ポイント追加処理
+//earnpointadd();
 
 //購入履歴にデータを挿入
 //buyinsert();
