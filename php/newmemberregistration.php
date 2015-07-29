@@ -15,8 +15,8 @@
 		}
 
 		// ここにDB処理いろいろ書く
-		$sql = "INSERT INTO member(name, kana, address, postal_code, password, email_address, phone_number)
-				VALUES(?,?,?,?,?,?,?)";
+		$sql = "INSERT INTO member(name, kana, address, postal_code, password, email_address, phone_number) "
+			 . "VALUES(?,?,?,?,?,?,?)";
 		if ($stmt = $mysqli->prepare($sql)) {
 			// 条件値をSQLにバインドする
 			$stmt->bind_param("sssssss", $_SESSION['name'], $_SESSION['kana'], $_SESSION['address'],

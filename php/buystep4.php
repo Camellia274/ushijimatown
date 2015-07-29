@@ -327,11 +327,11 @@ if (isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])){
 <?php
 for ($i = 0; $i < count($goodsname); $i++){
 	print "<table>"
-			. "<tr><td>アニメタイトル</td><td>$anime[$i]</td></tr>"
-			. "<tr><td>商品名</td><td>$goodsname[$i]</td></tr>"
-			. "<tr><td>価格</td><td>$price[$i]</td></tr>"
-			. "<tr><td>数量</td><td>$buyquantity[$i]個</td></tr>"
-			. "</table><br>";
+		. "<tr><td>アニメタイトル</td><td>$anime[$i]</td></tr>"
+		. "<tr><td>商品名</td><td>$goodsname[$i]</td></tr>"
+		. "<tr><td>価格</td><td>$price[$i]</td></tr>"
+		. "<tr><td>数量</td><td>$buyquantity[$i]個</td></tr>"
+		. "</table><br>";
 }
 print "合計" . $totalprice . "円";
 ?>

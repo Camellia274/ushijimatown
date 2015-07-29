@@ -218,6 +218,9 @@ $totalprice = 0;		//合計金額
 $goodsid = null;		//商品ID
 $gid = null;			//商品ID_DBfor用
 $buyquantity = null;	//購入数量
+$pointusetype = null;	//ポイントの利用方法
+$use_point = null;		//使用ポイント
+$earn_point = null;		//獲得ポイント
 ?>
 
 <?php
@@ -313,6 +316,19 @@ function buygoodsselect(){
 ?>
 
 <?php
+//ポイント処理
+$pointusetype = $_POST['usepoint'];
+
+switch ($pointusetype) {
+	case "使用しない":
+		break;
+
+	case "全て使用する":
+		break;
+}
+?>
+
+<?php
 //購入履歴に挿入
 function buyinsert(){
 	// mysqliクラスのオブジェクトを作成
@@ -332,9 +348,9 @@ function buyinsert(){
 	if ($stmt = $mysqli->prepare($sql)) {
 		// 条件値をSQLにバインドする
 		$stmt->bind_param("issisiissssss", $_SESSION['userid'], date("Y-m-d"), date("H:i:s", time()),
-				$totalprice, $_SESSION['cartpaymentmethod'], 使用ポイント, 獲得ポイント,
-				$_SESSION['cartdeliverymethod'], $_SESSION['cartdeliverytime'], $name, $postal_code, $address,
-				$phone_number);
+							$totalprice, $_SESSION['cartpaymentmethod'], 使用ポイント, 獲得ポイント,
+							$_SESSION['cartdeliverymethod'], $_SESSION['cartdeliverytime'], $name, $postal_code,
+							$address, $phone_number);
 
 		// 実行
 		$stmt->execute();
