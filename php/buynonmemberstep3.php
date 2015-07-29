@@ -199,22 +199,23 @@ $(function(){
 </tr>
 </table>
 </div>
-<div id="mannaka" align="center">
+<div id="mannaka" align="center"><br><br><br>
 <?php
 $_SESSION['deliverymethod'] = $_POST['deliverymethod'];
 $_SESSION['deliverytime'] = $_POST['deliverytime'];
 ?>
-配送先住所→配送方法→<font color="#ff0000">支払方法</font>→購入確認→購入完了<br><br>
-
+配送先住所→配送方法→<font size="5" color="#ff0000">支払方法</font>→購入確認→購入完了<br><br><br><br>
+◎支払方法<br><br>
 <form action="./buynonmemberstep4.php" method="post">
 <table>
-<tr><td colspan="2" align="center">支払方法</td></tr>
+
 <tr><td align="center"><input type="radio" value="代金引換" checked="checked" name="paymentmethod">代金引換</td></tr>
 <tr><td align="center"><input type="radio" value="クレジットカード" name="paymentmethod">クレジットカード</td></tr>
 <tr>
-<td align="center"><input type="submit" value="次へ"></td>
+<td align="center"></td>
 </tr>
-</table>
+</table><br><br>
+<input type="submit" value="次へ">
 </form>
 
 

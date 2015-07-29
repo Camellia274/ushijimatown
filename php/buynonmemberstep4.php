@@ -199,7 +199,7 @@ $(function(){
 </tr>
 </table>
 </div>
-<div id="mannaka" align="center">
+<div id="mannaka" align="center"><br><br><br>
 <?php
 $_SESSION['cartpaymentmethod'] = $_POST['paymentmethod'];
 ?>
@@ -260,7 +260,7 @@ function buygoodsselect(){
 	}
 }
 ?>
-配送先住所→配送方法→支払方法→<font color="#ff0000">購入確認</font>→購入完了<br><br>
+配送先住所→配送方法→支払方法→<font size="5" color="#ff0000">購入確認</font>→購入完了<br><br>
 
 <?php
 if (isset($_SESSION['cartgoodsid']) && isset($_SESSION['cartquantity'])){
@@ -278,7 +278,7 @@ for ($i = 0; $i < count($goodsname); $i++){
 			. "<tr><td>数量</td><td>$buyquantity[$i]個</td></tr>"
 			. "</table><br>";
 }
-print "合計" . $totalprice . "円";
+print "<font size=\"5\" >合計" . $totalprice . "円</font>";
 ?>
 <br><br>
 <table>

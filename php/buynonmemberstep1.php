@@ -199,11 +199,11 @@ $(function(){
 </tr>
 </table>
 </div>
-<div id="mannaka" align="center">
-<font color="#ff0000">配送先住所</font>→配送方法→支払方法→購入確認→購入完了<br><br>
+<div id="mannaka" align="center"><br><br><br>
+<font size="5" color="#ff0000">配送先住所</font>→配送方法→支払方法→購入確認→購入完了<br><br>
 
 <form action="./buynonmemberstep1inputcheck.php" method="post">
-新規登録
+新規登録<br><br>
 <table>
 <tr>
 <td colspan="2">
