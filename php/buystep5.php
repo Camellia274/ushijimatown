@@ -396,7 +396,6 @@ function earnpointadd(){
 }
 
 //購入履歴に挿入
-/*
 function buyinsert(){
 	// mysqliクラスのオブジェクトを作成
 	$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
@@ -427,8 +426,6 @@ function buyinsert(){
 	// DB接続を閉じる
 	$mysqli->close();
 }
-*/
-
 
 //会員情報を取得する
 memberinfo();
