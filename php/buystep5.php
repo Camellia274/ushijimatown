@@ -313,7 +313,6 @@ function buygoodsselect(){
 ?>
 
 <?php
-/*
 //購入履歴に挿入
 function buyinsert(){
 	// mysqliクラスのオブジェクトを作成
@@ -333,8 +332,9 @@ function buyinsert(){
 	if ($stmt = $mysqli->prepare($sql)) {
 		// 条件値をSQLにバインドする
 		$stmt->bind_param("issisiissssss", $_SESSION['userid'], date("Y-m-d"), date("H:i:s", time()),
-				合計金額, $_SESSION['cartpaymentmethod'], 使用ポイント, 獲得ポイント,
-				$_SESSION['cartdeliverymethod'], $_SESSION['cartdeliverytime'], 名前, 郵便番号, 住所, 電話番号);
+				$totalprice, $_SESSION['cartpaymentmethod'], 使用ポイント, 獲得ポイント,
+				$_SESSION['cartdeliverymethod'], $_SESSION['cartdeliverytime'], $name, $postal_code, $address,
+				$phone_number);
 
 		// 実行
 		$stmt->execute();
@@ -344,18 +344,17 @@ function buyinsert(){
 	// DB接続を閉じる
 	$mysqli->close();
 }
-*/
 ?>
 
 <?php
 //会員情報を取得する
-memberinfo();
+//memberinfo();
 
 //カートの商品情報を取得する
-buygoodsselect();
+//buygoodsselect();
 
 //購入履歴にデータを挿入
-
+//buyinsert();
 
 //購入履歴明細にデータを挿入
 
