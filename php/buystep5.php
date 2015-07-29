@@ -210,7 +210,7 @@ $address = null;		//住所
 $postal_code = null;	//郵便番号
 $email_address = null;	//メールアドレス
 $phone_number = null;	//電話番号
-$point = null;			//ポイント
+$point = null;			//保有ポイント
 $goodsname = array(); 	//商品名
 $price = array();		//価格
 $anime = array();		//アニメタイトル
@@ -265,9 +265,7 @@ function memberinfo(){
 	// DB接続を閉じる
 	$mysqli->close();
 }
-?>
 
-<?php
 //カートの商品情報を取得
 function buygoodsselect(){
 	$GLOBALS['goodsid'] = $_SESSION['cartgoodsid'];
@@ -313,22 +311,90 @@ function buygoodsselect(){
 		$mysqli->close();
 	}
 }
-?>
 
-<?php
-//ポイント処理
-$pointusetype = $_POST['usepoint'];
+//ポイント使用処理
+/*
+function usepoint(){
+	$GLOBALS['pointusetype'] = $_POST['pointusetype'];
 
-switch ($pointusetype) {
-	case "使用しない":
-		break;
+	switch ($GLOBALS['pointusetype']) {
+		case "使用しない":
+			$GLOBALS['use_point'] = 0;
+			break;
 
-	case "全て使用する":
-		break;
+		case "全て使用する":
+			break;
+	}
 }
-?>
+*/
 
-<?php
+//保有ポイント取得処理
+function pointselect(){
+	$GLOBALS['memberid'] = $_SESSION['userid'];
+
+	// mysqliクラスのオブジェクトを作成
+	$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
+	if ($mysqli->connect_error) {
+		echo $mysqli->connect_error;
+		exit();
+	}
+	else {
+		$mysqli->set_charset("utf8");
+	}
+
+	// ここにDB処理いろいろ書く
+	$sql = "SELECT point "
+		 . "FROM member "
+		 . "WHERE member_id = ?";
+	if ($stmt = $mysqli->prepare($sql)) {
+		// 条件値をSQLにバインドする
+		$stmt->bind_param("i", $GLOBALS['memberid']);
+
+		// 実行
+		$stmt->execute();
+
+		// 取得結果を変数にバインドする
+		$stmt->bind_result($point);
+		while ($stmt->fetch()) {
+			$GLOBALS['point'] = $point;
+		}
+		$stmt->close();
+	}
+	// DB接続を閉じる
+	$mysqli->close();
+}
+
+//獲得ポイント追加処理
+function earnpointadd(){
+	$GLOBALS['earn_point'] = floor($GLOBALS['totalprice'] / 100);
+	$GLOBALS['point'] += $GLOBALS['earn_point'];
+
+	// mysqliクラスのオブジェクトを作成
+	$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
+	if ($mysqli->connect_error) {
+		echo $mysqli->connect_error;
+		exit();
+	}
+	else {
+		$mysqli->set_charset("utf8");
+	}
+
+	// ここにDB処理いろいろ書く
+	$sql = "UPDATE member SET point = ? "
+		 . "WHERE member_id = ?";
+	if ($stmt = $mysqli->prepare($sql)) {
+		// 条件値をSQLにバインドする
+		$stmt->bind_param("ii", $GLOBALS['point'], $_SESSION['userid']);
+
+		// 実行
+		$stmt->execute();
+
+		$stmt->close();
+	}
+	// DB接続を閉じる
+	$mysqli->close();
+}
+
 //購入履歴に挿入
 function buyinsert(){
 	// mysqliクラスのオブジェクトを作成
@@ -348,7 +414,7 @@ function buyinsert(){
 	if ($stmt = $mysqli->prepare($sql)) {
 		// 条件値をSQLにバインドする
 		$stmt->bind_param("issisiissssss", $_SESSION['userid'], date("Y-m-d"), date("H:i:s", time()),
-							$totalprice, $_SESSION['cartpaymentmethod'], 使用ポイント, 獲得ポイント,
+							$totalprice, $_SESSION['cartpaymentmethod'], $use_point, $earn_point,
 							$_SESSION['cartdeliverymethod'], $_SESSION['cartdeliverytime'], $name, $postal_code,
 							$address, $phone_number);
 
@@ -360,14 +426,21 @@ function buyinsert(){
 	// DB接続を閉じる
 	$mysqli->close();
 }
-?>
 
-<?php
 //会員情報を取得する
-//memberinfo();
+memberinfo();
 
 //カートの商品情報を取得する
-//buygoodsselect();
+buygoodsselect();
+
+//ポイント使用処理
+//usepoint();
+
+//保有ポイント取得処理
+//pointselect();
+
+//獲得ポイント追加処理
+//earnpointadd();
 
 //購入履歴にデータを挿入
 //buyinsert();
