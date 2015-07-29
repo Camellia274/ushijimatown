@@ -210,7 +210,7 @@ $address = null;		//住所
 $postal_code = null;	//郵便番号
 $email_address = null;	//メールアドレス
 $phone_number = null;	//電話番号
-$point = null;			//ポイント
+$point = null;			//保有ポイント
 $goodsname = array(); 	//商品名
 $price = array();		//価格
 $anime = array();		//アニメタイトル
@@ -265,9 +265,7 @@ function memberinfo(){
 	// DB接続を閉じる
 	$mysqli->close();
 }
-?>
 
-<?php
 //カートの商品情報を取得
 function buygoodsselect(){
 	$GLOBALS['goodsid'] = $_SESSION['cartgoodsid'];
@@ -313,23 +311,28 @@ function buygoodsselect(){
 		$mysqli->close();
 	}
 }
-?>
 
-<?php
-//ポイント処理
-$pointusetype = $_POST['usepoint'];
+//ポイント使用処理
+/*
+function usepoint(){
+	$pointusetype = $_POST['usepoint'];
 
-switch ($pointusetype) {
-	case "使用しない":
-		break;
+	switch ($pointusetype) {
+		case "使用しない":
+			$use_point = 0;
+			break;
 
-	case "全て使用する":
-		break;
+		case "全て使用する":
+			break;
+	}
 }
-?>
+*/
 
-<?php
+//ポイント獲得処理
+
+
 //購入履歴に挿入
+/*
 function buyinsert(){
 	// mysqliクラスのオブジェクトを作成
 	$mysqli = new mysqli('localhost', 'root', 'root', 'ushijimatown');
@@ -360,14 +363,20 @@ function buyinsert(){
 	// DB接続を閉じる
 	$mysqli->close();
 }
-?>
+*/
 
-<?php
+
 //会員情報を取得する
-//memberinfo();
+memberinfo();
 
 //カートの商品情報を取得する
-//buygoodsselect();
+buygoodsselect();
+
+//ポイント使用処理
+//usepoint();
+
+//ポイント獲得処理
+$earn_point = floor($totalprice / 100);
 
 //購入履歴にデータを挿入
 //buyinsert();
