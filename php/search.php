@@ -260,7 +260,7 @@ function search(){
 						<option value=\"5\">5</option>
 					</select>個
         			</td></tr>
-				   <tr><td colspan=\"2\" align=\"center\"><input type=\"submit\" value=\"カートに入れる\"></td></tr>
+				   <tr><td colspan=\"2\" align=\"center\"><input type=\"image\" src=\"../image/cbae5cb53c1c2ed36cc9a3388e2b7e79.png\" width=\"120\" height=\"35\" alt=\"送信する\"></td></tr>
 				   </table></div>
 				   </form></div>";
 		}

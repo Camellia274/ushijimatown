@@ -199,7 +199,7 @@ $(function(){
 </tr>
 </table>
 </div>
-<div id="mannaka" align="center">
+<div id="mannaka" align="center"><br><br><br>
 <?php
 
 ?>
@@ -217,7 +217,7 @@ unset($_SESSION['deliverymethod']);
 unset($_SESSION['deliverytime']);
 unset($_SESSION['cartpaymentmethod']);
 ?>
-配送先住所→配送方法→支払方法→購入確認→<font color="#ff0000">購入完了</font><br><br>
+配送先住所→配送方法→支払方法→購入確認→<font size="5" color="#ff0000">購入完了</font><br><br>
 
 <p>購入が完了しました</p><br>
 <form action="../html/index.html" method="post">

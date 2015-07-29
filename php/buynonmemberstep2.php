@@ -199,29 +199,27 @@ $(function(){
 </tr>
 </table>
 </div>
-<div id="mannaka" align="center">
-配送先住所→<font color="#ff0000">配送方法</font>→支払方法→購入確認→購入完了<br><br>
+<div id="mannaka" align="center"><br><br><br>
+配送先住所→<font size="5" color="#ff0000">配送方法</font>→支払方法→購入確認→購入完了<br><br>
 
-<form action="./buynonmemberstep3.php" method="post">
-<table>
-<tr><td align="center" colspan="2">配送方法</td></tr>
-<tr>
-<td align="center"><input type="radio" value="通常配送" name="deliverymethod" checked="checked">通常配送</td>
-<td align="center"><input type="radio" value="速達" name="deliverymethod">速達</td>
-</tr>
-<tr><td align="center" colspan="2">配送時間</td></tr>
-<tr><td align="center" colspan="2">
+<form action="./buynonmemberstep3.php" method="post"><br>
+◎配送方法<br><br>
+
+<input type="radio" value="通常配送" name="deliverymethod" checked="checked">通常配送
+<input type="radio" value="速達" name="deliverymethod">速達
+<br><br>
+◎配送時間<br>
+
 <select name="deliverytime">
 <option value="指定なし">指定なし
 <option value="9時～12時">9時～12時
 <option value="13時～15時">13時～15時
 <option value="16時～18時">16時～18時
 </select>
-</td></tr>
-<tr>
-<td align="center" colspan="2"><input type="submit" value="次へ"></td>
-</tr>
-</table>
+
+<br><br>
+<br>
+<input type="submit" value="次へ">
 </form>
 
 

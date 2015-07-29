@@ -281,7 +281,7 @@ $(function(){
 				<input type=\"submit\" value=\"カート内の商品をすべて削除する\">
 				</form>";
 		print "<form action=\"./buylogin.php\" method=\"post\">
-				<input type=\"submit\" value=\"レジに進む\">
+				<input type=\"image\" src=\"../image/plokujytr.jpg\" width=\"200\" height=\"35\" alt=\"送信する\">
 				</form>";
 		print "合計".$GLOBALS['totalprice']."円";
 		print "</div><div class=\"animebox\">";
