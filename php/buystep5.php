@@ -329,7 +329,11 @@ function usepoint(){
 */
 
 //ポイント獲得処理
-
+/*
+function earnpoint(){
+	$earn_point = floor($totalprice / 100);
+}
+*/
 
 //購入履歴に挿入
 /*
@@ -376,7 +380,7 @@ buygoodsselect();
 //usepoint();
 
 //ポイント獲得処理
-$earn_point = floor($totalprice / 100);
+//earnpoint();
 
 //購入履歴にデータを挿入
 //buyinsert();
