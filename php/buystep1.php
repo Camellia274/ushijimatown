@@ -304,6 +304,11 @@ if (isset($_SESSION['errormessage'])){
 <li><a href="/ushijimatown/php/search.php?keywords=ドラゴンボール"><img src="/ushijimatown/image/doragonball01.gif" width="190" height="60" /></a></li>
 </ul>
 </div>
+<div id="twitter">
+<a class="twitter-timeline" href="https://twitter.com/ikedadaizo" data-widget-id="624386759351255040" width="190" height="50" >@ikedadaizoさんのツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+         if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div></div>
 </div>
 
 
