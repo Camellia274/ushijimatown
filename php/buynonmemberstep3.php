@@ -181,7 +181,7 @@ $(function(){
 
 <div id="anime">
 <div id="animetitle">
-<div id="animeitiran"><center><a href="animelist.html">アニメ一覧</a></center></div>
+<div id="animeitiran"><center><a href="../html/animelist.html">アニメ一覧</a></center></div>
 
 
 <table width="200" style="margin-left:10px;" >
